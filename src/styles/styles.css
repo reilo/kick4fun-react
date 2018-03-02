@@ -1,0 +1,14 @@
+a.active {
+  color:orange !important;
+  text-decoration: underline !important;
+}
+
+.top-bar {
+  padding: 0em !important;
+  padding-right: 0.5em !important;
+  padding-left: 0.5em !important;
+}
+
+.row {
+  padding: 1em;
+}
