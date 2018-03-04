@@ -6,6 +6,7 @@ const Header = () => {
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
+          <li className="menu-text"><p>OpenText Kickerliga</p></li>
           <li className="menu-text">
             <IndexLink to="/" activeClassName="active">Home</IndexLink>
           </li>

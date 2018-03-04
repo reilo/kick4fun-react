@@ -9,6 +9,14 @@ a.active {
   padding-left: 0.5em !important;
 }
 
+.menu p {
+  padding-top: 0.7rem;
+  padding-right: 1rem;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0rem;
+  line-height: 1rem 
+}
+
 .row {
   padding: 1em;
 }
