@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import courses from './courseReducer';
 import authors from './authorReducer';
-import liga from './ligaReducer';
+import { tournament } from './tournamentReducer';
 
 const rootReducer = combineReducers({
   courses,
   authors,
-  liga
+  tournament
 });
 
 export default rootReducer;

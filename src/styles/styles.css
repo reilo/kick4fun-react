@@ -17,6 +17,13 @@ a.active {
   line-height: 1rem 
 }
 
-.row {
+.row, .grid-x {
   padding: 1em;
+}
+
+table tbody td, table thead th {
+  padding-top: 0.25rem !important;
+  padding-right: 0.625rem;
+  padding-bottom: 0.25rem !important;
+  padding-left: 0.625rem;
 }

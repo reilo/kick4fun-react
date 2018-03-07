@@ -1,17 +1,18 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as ligaActions from '../../actions/ligaActions';
+import * as tournamentActions from '../../actions/tournamentActions';
 
 class AboutPage extends React.Component {
   render() {
-    const { liga, actions } = this.props;
+    const { tournament, actions } = this.props;
+    debugger;
     return (
       <div className="row">
         <div className="small-12 medium-12 large-12 columns">
           <h1>About</h1>
           <p>This application uses React, Redux, React Router and a variety of other helpful...</p>
-          <p>{liga.Name}</p>
+          <p>{tournament.name}</p>
         </div>
       </div>
     );
@@ -19,19 +20,19 @@ class AboutPage extends React.Component {
 }
 
 AboutPage.propTypes = {
-  liga: PropTypes.object.isRequired,
+  tournament: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    liga: state.liga
+    tournament: state.tournament
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ligaActions, dispatch)
+    actions: bindActionCreators(tournamentActions, dispatch)
   };
 }
 
