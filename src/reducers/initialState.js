@@ -1,5 +1,7 @@
 export default {
   authors: [],
   courses: [],
-  tournament: {}
+  ligaSummary: {},
+  tournament: {},
+  tournaments: []
 };

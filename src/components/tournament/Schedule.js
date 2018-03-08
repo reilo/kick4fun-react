@@ -4,7 +4,8 @@ import Round from './Round';
 const Schedule = ({ tournament }) => {
   return (
     <div>
-      {tournament.rounds && tournament.rounds.map((round, index) =>
+      {tournament && tournament.rounds && tournament.rounds.map((round, index) =>
+        index < 2 &&
         <div className="callout">
           <Round key={index} round={round} index={index + 1} />
         </div>

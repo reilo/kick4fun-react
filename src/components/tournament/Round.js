@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
+import Match from './Match';
 
 const Round = ({ index, round }) => {
   return (
     <div>
-      <h3>Runde Nr. {index}</h3>
-      <h4>Von {round.startDate} bis {round.endDate}</h4>
+      <h4>Runde Nr. {index}</h4>
+      <h5>Von {round.startDate} bis {round.endDate}</h5>
+      {round.matches.map((match, index) => <Match match={match} key={index} />)}
     </div>
   );
 };

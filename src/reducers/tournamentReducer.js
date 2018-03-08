@@ -1,13 +1,11 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-function tournamentReducer(state = {}, action) {
+export default function tournamentReducer(state = initialState.tournament, action) {
   switch (action.type) {
-    case types.LOAD_TOURNAMENT_SUCCESS:
+   case types.LOAD_TOURNAMENT_SUCCESS:
       return action.tournament;
     default:
       return state;
   }
 }
-
-export { tournamentReducer as tournament };

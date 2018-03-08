@@ -1,3 +1,6 @@
-Liga-Templates
-aktuelles Turnier vs. Historie
-Refactoring Liga items / Englisch
+aktuelles Turnier Details
+Historie details
+Regeln
+Gridlayout mobil, tablet, PC
+about box mit projektinfo, pluralsight, github, react
+Liga-Templates verarbeiten

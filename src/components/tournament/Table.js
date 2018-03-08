@@ -26,7 +26,7 @@ const Table = ({ rows }) => {
 };
 
 Table.propTypes = {
-  rows: PropTypes.array
+  rows: PropTypes.array // isRequired: warning due to asynchronous loading?
 };
 
 export default Table;
