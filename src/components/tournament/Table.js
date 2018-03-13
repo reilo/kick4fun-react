@@ -8,12 +8,12 @@ const Table = ({ rows }) => {
         <tr>
           <th>&nbsp;</th>
           <th>Name</th>
-          <th>Spiele</th>
-          <th>Siege</th>
-          <th>Punkte</th>
-          <th>Tore+/-</th>
-          <th>Tore+</th>
-          <th>Tore-</th>
+          <th className="number">Spiele</th>
+          <th className="number">Siege</th>
+          <th className="number">Punkte</th>
+          <th className="number">Tore+/-</th>
+          <th className="number">Tore+</th>
+          <th className="number">Tore-</th>
         </tr>
       </thead>
       <tbody>

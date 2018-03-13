@@ -21,9 +21,26 @@ a.active {
   padding: 1em;
 }
 
+.label {
+  display: block !important;
+  font-size: inherit !important;
+}
+
+table {
+  max-width: 100%;
+  white-space: wrap;
+}
+
 table tbody td, table thead th {
   padding-top: 0.25rem !important;
   padding-right: 0.625rem;
   padding-bottom: 0.25rem !important;
   padding-left: 0.625rem;
+}
+
+td.number, th.number {
+  text-align: right;
+}
+.small.button {
+  margin-bottom: 0rem !important;
 }

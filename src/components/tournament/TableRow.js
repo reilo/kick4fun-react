@@ -6,12 +6,12 @@ const TableRow = ({ pos, row }) => {
     <tr>
       <td>{pos}</td>
       <td>{row.player}</td>
-      <td>{row.matches}</td>
-      <td>{row.wins}</td>
-      <td>{row.score}</td>
-      <td>{row.goalsScored - row.goalsShipped}</td>
-      <td>{row.goalsScored}</td>
-      <td>{row.goalsShipped}</td>
+      <td className="number">{row.matches}</td>
+      <td className="number">{row.wins}</td>
+      <td className="number">{row.score}</td>
+      <td className="number">{row.goalsScored - row.goalsShipped}</td>
+      <td className="number">{row.goalsScored}</td>
+      <td className="number">{row.goalsShipped}</td>
     </tr>
   );
 };

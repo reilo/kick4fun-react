@@ -1,6 +1,16 @@
 aktuelles Turnier Details
 Historie details
 Regeln
-Gridlayout mobil, tablet, PC
+Statistik Übersicht mit Links zu Teilnehmern (aktuell/gesamt), Turnieren
 about box mit projektinfo, pluralsight, github, react
 Liga-Templates verarbeiten
+Tabs: Home, Liga, Statistik, Historie, Spielplatz, Info - selektiertes Turnier ohne tab (--> Routing) 
+Turnier passwortgeschützt, official-Flag, completed-Flag
+Spiel bearbeiten/eingeben
+Runde bearbeiten (Datum)
+(Runde beenden)
+Turnier beenden, Schreibschutz (completed)
+Spielplatz: Turniere erstellen
+Teilnehmerverwaltung
+Admin-Bereich (per URL?)
+Edit-Modus Turnier

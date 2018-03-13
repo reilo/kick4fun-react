@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-//import { Link } from 'react-router';
 import * as config from '../../appConfig';
 import Table from '../tournament/Table';
-import Schedule from '../tournament/Schedule';
+import Schedule, { ScheduleMode, DisplayMode } from '../tournament/Schedule';
 import History from '../tournament/History';
 import { store } from '../../../src/store';
 import { loadTournament } from '../../actions/tournamentActions';
@@ -30,15 +29,27 @@ class HomePage extends React.Component {
   render() {
     const { tournament, tournaments } = this.props;
     return (
-      <div className="grid-x grid-margin-x">
-        <div className="cell small-6 medium-6 large-6 ">
-          <h4>Laufendes Turnier: {tournament.name}</h4>
-          <Schedule tournament={tournament} />
-          <h4>Historie:</h4>
-          <History tournaments={tournaments} />
-        </div>
-        <div className="cell small-6 medium-6 large-6 ">
-          <Table rows={tournament && tournament.table} />
+      <div className="grid-container">
+        <div className="grid-x grid-margin-x grid-margin-y">
+          <div className="cell small-12 medium-12 large-6 ">
+            <h5 className="success label">{tournament ? tournament.name : "Laden..."}</h5>
+            <Schedule
+              tournament={tournament}
+              mode={ScheduleMode.current}
+              count={3}
+              display={DisplayMode.default} />
+          </div>
+          <div className="cell small-12 medium-12 large-6 ">
+            <h5 className="primary label">Aktuelle Tabelle</h5>
+            <Table rows={tournament && tournament.table} />
+          </div>
+          <div className="cell small-12 medium-12 large-6 ">
+            <h4 className="primary label">Historie: Abeschlossene Turniere</h4>
+            <History tournaments={tournaments} />
+          </div>
+          <div className="cell small-12 medium-12 large-6 ">
+            <h4 className="primary label">Kickerregeln</h4>
+          </div>
         </div>
       </div>
     );
