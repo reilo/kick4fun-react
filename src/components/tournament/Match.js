@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { ChangeMode, DisplayMode } from './Schedule';
 
-const Match = ({ match, change, display }) => {
+const Match = ({ tournament, roundId, matchId, change, display }) => {
+  const match = tournament.rounds[roundId].matches[matchId];
   const p = match.player;
   const s = match.sets;
   const r = match.result;
@@ -12,6 +13,7 @@ const Match = ({ match, change, display }) => {
   const sstr3 = s ? s[2][0] + ":" + s[2][1] : "-:-";
   const rstr = r ? r[0] + ":" + r[1] : "-:-";
   const date = (new Date(match.date)).toLocaleDateString();
+  const editUrl = "/match/" + tournament.id + "/" + roundId + "/" + matchId;
   return (
     <tr>
       {display == DisplayMode.allDetails && <td>{date}</td>}
@@ -19,18 +21,20 @@ const Match = ({ match, change, display }) => {
       <td>-</td>
       <td>{pstr2}</td>
       <td>{rstr}</td>
-      <td>( {sstr1}</td>
+      <td>({sstr1}</td>
       <td>{sstr2}</td>
-      <td>{sstr3} )</td>
+      <td>{sstr3})</td>
       {change == ChangeMode.modify &&
-        <td><a className="small button" href="#0">Edit</a></td>
+        <td><a className="small button" href={editUrl}>Edit</a></td>
       }
     </tr>
   );
 };
 
 Match.propTypes = {
-  match: PropTypes.object.isRequired,
+  tournament: PropTypes.object.isRequired,
+  roundId: PropTypes.number.isRequired,
+  matchId: PropTypes.number.isRequired,
   change: PropTypes.string,
   display: PropTypes.string
 };

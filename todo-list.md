@@ -1,3 +1,11 @@
+Edit Match Page:
+- Änderungen nicht verlieren...
+- Link zurück setzen
+- Butten für Abbrechen
+Edit Round Page:
+- ...
+Speichern implementieren
+
 aktuelles Turnier Details
 Historie details
 Regeln

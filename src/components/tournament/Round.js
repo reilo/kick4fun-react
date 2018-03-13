@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import Match from './Match';
 import { ChangeMode, DisplayMode } from "./Schedule";
 
-const Round = ({ index, round, change, display }) => {
+const Round = ({ tournament, roundId, change, display }) => {
+  const round = tournament.rounds[roundId];
   const startDate = (new Date(round.startDate)).toLocaleDateString();
   const endDate = (new Date(round.endDate)).toLocaleDateString();
   const labelType = "primary label";
@@ -10,15 +11,21 @@ const Round = ({ index, round, change, display }) => {
   return (
     <div>
       <span style={nobreak}>
-        <h5 className={labelType}>Runde {index} ({startDate} bis {endDate})&nbsp;
+        <h5 className={labelType}>Runde {roundId + 1} ({startDate} bis {endDate})&nbsp;
         {change == ChangeMode.modify &&
             <a className="small button" href="#0">Edit</a>}
         </h5>
       </span>
       <table className="table">
         <tbody>
-          {round.matches.map((match, index) => 
-          <Match match={match} key={index} change={change} display={display} />)}
+          {round.matches.map((match, index) =>
+            <Match
+              key={index}
+              tournament={tournament}
+              roundId={roundId}
+              matchId={index}
+              change={change}
+              display={display} />)}
         </tbody>
       </table>
     </div>
@@ -26,8 +33,8 @@ const Round = ({ index, round, change, display }) => {
 };
 
 Round.propTypes = {
-  round: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
+  tournament: PropTypes.object.isRequired,
+  roundId: PropTypes.number.isRequired,
   change: PropTypes.string,
   display: PropTypes.string
 };

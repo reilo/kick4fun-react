@@ -17,7 +17,7 @@ const Schedule = ({ tournament, mode, count, change, display }) => {
   const today = (new Date()).toISOString().split('T')[0];
   return (
     <div>
-      {tournament && tournament.rounds && tournament.rounds.map((round, index) =>
+      {tournament.rounds && tournament.rounds.map((round, index) =>
         (
           mode == ScheduleMode.all ||
           mode == ScheduleMode.first && index < count ||
@@ -34,8 +34,8 @@ const Schedule = ({ tournament, mode, count, change, display }) => {
         ) &&
         <Round
           key={index}
-          round={round}
-          index={index + 1}
+          tournament={tournament}
+          roundId={index}
           change={change}
           display={display} />
       )}
