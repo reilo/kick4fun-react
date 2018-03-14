@@ -27,7 +27,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const { tournament, tournaments } = this.props;
+    const { tournament, tournaments, ligaSummary } = this.props;
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
@@ -49,6 +49,11 @@ class HomePage extends React.Component {
           </div>
           <div className="cell small-12 medium-12 large-6 ">
             <h4 className="primary label">Kickerregeln</h4>
+            {
+              ligaSummary.rules && ligaSummary.rules.map((line, index) =>
+                <p>{line}</p>
+              )
+            }
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
               <SelectInput
                 name="set-0-0"
                 label=""
-                value={s[0][0].toString()}
+                value={s ? s[0][0].toString() : "0"}
                 defaultOption="0"
                 options={defaultOptions}
                 onChange={onChange} />
@@ -41,7 +41,7 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
               <SelectInput
                 name="set-1-0"
                 label=""
-                value={s[1][0].toString()}
+                value={s ? s[1][0].toString() : "0"}
                 defaultOption="0"
                 options={defaultOptions}
                 onChange={onChange} />
@@ -50,7 +50,7 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
               <SelectInput
                 name="set-2-0"
                 label=""
-                value={s[2][0].toString()}
+                value={s ? s[2][0].toString() : "0"}
                 defaultOption="0"
                 options={defaultOptions}
                 onChange={onChange} />
@@ -62,7 +62,7 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
               <SelectInput
                 name="set-0-1"
                 label=""
-                value={s[0][1].toString()}
+                value={s ? s[0][1].toString() : "0"}
                 defaultOption="0"
                 options={defaultOptions}
                 onChange={onChange} />
@@ -71,7 +71,7 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
               <SelectInput
                 name="set-1-1"
                 label=""
-                value={s[1][1].toString()}
+                value={s ? s[1][1].toString() : "0"}
                 defaultOption="0"
                 options={defaultOptions}
                 onChange={onChange} />
@@ -80,7 +80,7 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
               <SelectInput
                 name="set-2-1"
                 label=""
-                value={s[2][1].toString()}
+                value={s ? s[2][1].toString() : "0"}
                 defaultOption="0"
                 options={defaultOptions}
                 onChange={onChange} />

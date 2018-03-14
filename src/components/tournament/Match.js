@@ -8,9 +8,9 @@ const Match = ({ tournament, roundId, matchId, change, display }) => {
   const r = match.result;
   const pstr1 = p && p[0][0] + " & " + p[0][1];
   const pstr2 = p && p[1][0] + " & " + p[1][1];
-  const sstr1 = s ? s[0][0] + ":" + s[0][1] : "-:-";
-  const sstr2 = s ? s[1][0] + ":" + s[1][1] : "-:-";
-  const sstr3 = s ? s[2][0] + ":" + s[2][1] : "-:-";
+  const sstr1 = s ? s[0] ? s[0][0] + ":" + s[0][1] : ""  : "-:-";
+  const sstr2 = s ? s[1] ? s[1][0] + ":" + s[1][1] : "" : "-:-";
+  const sstr3 = s ? s[2] ? s[2][0] + ":" + s[2][1] : "" : "-:-";
   const rstr = r ? r[0] + ":" + r[1] : "-:-";
   const date = (new Date(match.date)).toLocaleDateString();
   const editUrl = "/match/" + tournament.id + "/" + roundId + "/" + matchId;

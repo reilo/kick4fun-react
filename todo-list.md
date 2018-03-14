@@ -1,5 +1,5 @@
+Historie sortieren
 Edit Match Page:
-- Änderungen nicht verlieren...
 - Link zurück setzen
 - Butten für Abbrechen
 Edit Round Page:
@@ -8,12 +8,10 @@ Speichern implementieren
 
 aktuelles Turnier Details
 Historie details
-Regeln
 Statistik Übersicht mit Links zu Teilnehmern (aktuell/gesamt), Turnieren
 about box mit projektinfo, pluralsight, github, react
 Liga-Templates verarbeiten
 Tabs: Home, Liga, Statistik, Historie, Spielplatz, Info - selektiertes Turnier ohne tab (--> Routing) 
-Turnier passwortgeschützt, official-Flag, completed-Flag
 Spiel bearbeiten/eingeben
 Runde bearbeiten (Datum)
 (Runde beenden)
