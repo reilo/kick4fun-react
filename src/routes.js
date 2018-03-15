@@ -13,6 +13,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="liga" component={LigaPage} />
+    <Route path="liga/:tid" component={LigaPage} />
     <Route path="match/:tid/:rid/:mid" component={MatchPage} />
     <Route path="courses" component={CoursesPage} />
     <Route path="course/:id" component={ManageCoursePage} />

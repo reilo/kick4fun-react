@@ -12,11 +12,12 @@ const Match = ({ tournament, roundId, matchId, change, display }) => {
   const sstr2 = s ? s[1] ? s[1][0] + ":" + s[1][1] : "" : "-:-";
   const sstr3 = s ? s[2] ? s[2][0] + ":" + s[2][1] : "" : "-:-";
   const rstr = r ? r[0] + ":" + r[1] : "-:-";
-  const date = (new Date(match.date)).toLocaleDateString();
+  const date = new Date(match.date);
+  const dateStr = isNaN(date.getTime()) ? "" : date.toLocaleDateString();
   const editUrl = "/match/" + tournament.id + "/" + roundId + "/" + matchId;
   return (
     <tr>
-      {display == DisplayMode.allDetails && <td>{date}</td>}
+      {display == DisplayMode.allDetails && dateStr && <td>{dateStr}</td>}
       <td>{pstr1}</td>
       <td>-</td>
       <td>{pstr2}</td>
@@ -25,7 +26,7 @@ const Match = ({ tournament, roundId, matchId, change, display }) => {
       <td>{sstr2}</td>
       <td>{sstr3})</td>
       {change == ChangeMode.modify &&
-        <td><a className="small button" href={editUrl}>Edit</a></td>
+        <td><a className="small button tinyborder" href={editUrl}>Edit</a></td>
       }
     </tr>
   );

@@ -32,7 +32,7 @@ class HomePage extends React.Component {
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-12 medium-12 large-6 ">
-            <h5 className="success label">{tournament ? tournament.name : "Laden..."}</h5>
+            <h5 className="primary label">{tournament ? tournament.name : "Laden..."}</h5>
             <Schedule
               tournament={tournament}
               mode={ScheduleMode.current}
@@ -44,16 +44,20 @@ class HomePage extends React.Component {
             <Table rows={tournament && tournament.table} />
           </div>
           <div className="cell small-12 medium-12 large-6 ">
-            <h4 className="primary label">Historie: Abeschlossene Turniere</h4>
-            <History tournaments={tournaments} />
+            <div className="callout secondary">
+              <h4 >Abgeschlossene Turniere</h4>
+              <History tournaments={tournaments} />
+            </div>
           </div>
           <div className="cell small-12 medium-12 large-6 ">
-            <h4 className="primary label">Kickerregeln</h4>
-            {
-              ligaSummary.rules && ligaSummary.rules.map((line, index) =>
-                <p>{line}</p>
-              )
-            }
+            <div className="callout primary">
+              <h4 >Kickerregeln</h4>
+              {
+                ligaSummary.rules && ligaSummary.rules.map((line, index) =>
+                  <p>{line}</p>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>

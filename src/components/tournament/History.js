@@ -4,9 +4,13 @@ import Summary from './Summary';
 const History = ({ tournaments }) => {
   return (
     <div>
-        {tournaments && tournaments.map((tournament, index) =>
-          <Summary key={index} tournament={tournament} />
-        )}
+      {tournaments && tournaments.slice().sort((a, b) =>
+        a.status > b.status ? -1 : b.status > a.status ? 1 :
+          a.completedDate > b.completedDate ? -1 : b.completedDate > a.completedDate ? 1 : 0
+      ).map((tournament, index) =>
+        tournament.status == "completed" && tournament.official == true &&
+        <Summary key={index} tournament={tournament} />
+      )}
     </div>
   );
 };

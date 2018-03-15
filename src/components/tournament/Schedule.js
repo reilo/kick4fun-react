@@ -23,11 +23,14 @@ const Schedule = ({ tournament, mode, count, change, display }) => {
           mode == ScheduleMode.first && index < count ||
           mode == ScheduleMode.last && index > tournament.rounds.length - count - 1 ||
           (
-            mode == ScheduleMode.current &&
-            (
-              index < tournament.rounds.length - 1 &&
-              tournament.rounds[index + 1].endDate >= today ||
-              round.endDate >= today
+            mode == ScheduleMode.current && (
+              index > tournament.rounds.length - count - 1 ||
+              round.endDate &&
+              (
+                index < tournament.rounds.length - 1 &&
+                tournament.rounds[index + 1].endDate >= today ||
+                round.endDate >= today
+              )
             ) &&
             count-- > 0
           )

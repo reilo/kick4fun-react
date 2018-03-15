@@ -10,7 +10,7 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
   });
   return (
     <form>
-      <h5>Spieleingabe: Runde {roundId + 1}, Spiel {matchId + 1}</h5>
+      <h5 className="primary label">Spieleingabe: Runde {roundId + 1} - Spiel {matchId + 1}</h5>
       <TextInput
         name="date"
         label="Spieldatum"

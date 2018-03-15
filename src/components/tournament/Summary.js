@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 const Summary = ({ tournament }) => {
   return (
     <div>
-      <h5>{tournament.name}</h5>
+      <h5><Link to={'/liga/' + tournament.id}>{tournament.name}</Link></h5>
     </div>
   );
 };
