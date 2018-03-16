@@ -28,6 +28,7 @@ class LigaPage extends React.Component {
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
+          <div className="cell small-0 medium-0 large-2" />
           <div className="cell small-12 medium-12 large-8">
             <h5 className="primary label">{tournament ? tournament.name : "Laden..."}</h5>
             <Schedule
@@ -36,10 +37,15 @@ class LigaPage extends React.Component {
               change={tournament.status == "progress" ? ChangeMode.modify : ChangeMode.readOnly}
               display={DisplayMode.allDetails} />
           </div>
+          <div className="cell small-0 medium-0 large-2" />
+          <div className="cell small-0 medium-0 large-2" />
+
           <div className="cell small-12 medium-12 large-8">
             <h5 className="primary label">Aktuelle Tabelle</h5>
             <Table rows={tournament && tournament.table} />
           </div>
+          <div className="cell small-0 medium-0 large-2" />
+
         </div>
       </div>
     );

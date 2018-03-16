@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import SelectInput from '../common/SelectInput';
 import TextInput from '../common/TextInput';
 
-const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) => {
+const MatchForm = ({ match, onChange, onSave, roundId, matchId, loading }) => {
   const p = match.player;
   const s = match.sets;
   const defaultOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => {
@@ -91,7 +91,8 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
       <button
         type="button"
         disbled={loading}
-        className="button">
+        className="button"
+        onClick={onSave}>
         {loading ? 'Speichern...' : 'Speichern'}
       </button>
     </form>
@@ -99,11 +100,11 @@ const MatchForm = ({ tournament, match, onChange, roundId, matchId, loading }) =
 };
 
 MatchForm.propTypes = {
-  tournament: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   roundId: PropTypes.number.isRequired,
   matchId: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
   loading: PropTypes.bool//.isRequired
 };
 

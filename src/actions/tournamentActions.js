@@ -28,3 +28,31 @@ export function loadTournament(id) {
     });
   };
 }
+
+export function updateMatchSuccess() {
+  return { type: types.UPDATE_MATCH_SUCCESS };
+}
+
+export function updateMatch(tid, rid, mid, match) {
+  return function (dispatch, getState) {
+    return TournamentApi.updateMatch(tid, rid, mid, match).then(() => {
+      dispatch(updateMatchSuccess());
+    }).catch(error => {
+      throw (error);
+    });
+  };
+}
+
+export function updateRoundSuccess() {
+  return { type: types.UPDATE_ROUND_SUCCESS };
+}
+
+export function updateRound(tid, rid, round) {
+  return function (dispatch, getState) {
+    return TournamentApi.updateRound(tid, rid, round).then(() => {
+      dispatch(updateRoundSuccess());
+    }).catch(error => {
+      throw (error);
+    });
+  };
+}

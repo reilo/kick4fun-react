@@ -15,13 +15,15 @@ class MatchPage extends React.Component {
     };
 
     this.updateMatchState = this.updateMatchState.bind(this);
+    this.updateMatch = this.updateMatch.bind(this);
 
     const tournamentId = this.props.params.tid;
     store.dispatch(tournamentActions.loadTournament(tournamentId));
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.date != nextProps.match.date || this.props.match.player != nextProps.match.player) {
+    if (this.props.match.date != nextProps.match.date ||
+      this.props.match.player != nextProps.match.player) {
       this.setState({ match: nextProps.match });
     }
   }
@@ -35,9 +37,19 @@ class MatchPage extends React.Component {
       const parts = field.split("-");
       const s1 = parseInt(parts[1]);
       const s2 = parseInt(parts[2]);
-      match.sets[s1][s2] = event.target.value;
+      match.sets[s1][s2] = parseInt(event.target.value);
     }
     return this.setState({ match: match });
+  }
+
+  updateMatch(event) {
+    event.preventDefault();
+    this.props.actions.updateMatch(
+      this.props.tournament.id,
+      this.props.roundId,
+      this.props.matchId,
+      this.state.match);
+    this.context.router.push('/liga');
   }
 
   render() {
@@ -46,12 +58,14 @@ class MatchPage extends React.Component {
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-12 medium-12 large-8">
-            <h5 className="success label">{tournament ? tournament.name : "Laden..."}</h5>
+            <h5 className="primary label">
+              {tournament ? tournament.name : "Laden..."}
+            </h5>
             <MatchForm
-              tournament={tournament}
               match={this.state.match}
               roundId={roundId}
               matchId={matchId}
+              onSave={this.updateMatch}
               onChange={this.updateMatchState}
             />
           </div>
@@ -66,7 +80,12 @@ MatchPage.propTypes = {
   tournament: PropTypes.object.isRequired,
   match: PropTypes.object,
   roundId: PropTypes.number,
-  matchId: PropTypes.number
+  matchId: PropTypes.number,
+  actions: PropTypes.object.isRequired
+};
+
+MatchPage.contextTypes = {
+  router: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

@@ -18,11 +18,6 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="top-bar-right">
-        <ul className="menu">
-        <li className="menu-text"><p>Kontakt</p></li>
-        </ul>
-      </div>
     </div>
   );
 };

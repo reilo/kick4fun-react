@@ -1,10 +1,5 @@
-Edit Match Page:
-- Link zurück setzen
-- Button für Abbrechen
-Edit Round Page:
-- Datum
-Speichern implementieren
-
+Neu laden nach Änderungen
+Spielplan Spalten ausrichten
 aktuelles Turnier Details
 Historie details
 Statistik Übersicht mit Links zu Teilnehmern (aktuell/gesamt), Turnieren
@@ -15,3 +10,5 @@ Spielplatz: Turniere erstellen
 Teilnehmerverwaltung
 Admin-Bereich (per URL?)
 Edit-Modus Turnier
+Icon in Menubar
+Kontakt, E-Mail

@@ -11,12 +11,13 @@ const Round = ({ tournament, roundId, change, display }) => {
   const dateStr = sstr || estr ? "(" + sstr + " bis " + estr + ")" : "";
   const labelType = "primary label";
   const nobreak = { "whiteSpace": "nowrap" };
+  const editUrl = "/round/" + tournament.id + "/" + roundId;
   return (
     <div>
       <span style={nobreak}>
         <h5 className={labelType}>Runde {roundId + 1} {dateStr}&nbsp;
         {change == ChangeMode.modify &&
-            <a className="small button noborder" href="#0">Edit</a>}
+            <a className="small button noborder" href={editUrl}>Edit</a>}
         </h5>
       </span>
       <table className="table">

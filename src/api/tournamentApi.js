@@ -38,6 +38,40 @@ class TournamentApi {
       }, delay);
     });
   }
+
+  static updateMatch(tid, rid, mid, body) {
+    const url = config.API_URL + "tournaments/" + tid + "/rounds/" + rid + "/matches/" + mid;
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        return fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }).then(
+          response => resolve(response.json())
+        );
+      }, delay);
+    });
+  }
+
+  static updateRound(tid, rid, body) {
+    const url = config.API_URL + "tournaments/" + tid + "/rounds/" + rid;
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        return fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }).then(
+          response => resolve(response.json())
+        );
+      }, delay);
+    });
+  }
 }
 
 export default TournamentApi;

@@ -57,3 +57,10 @@ td.number, th.number {
   padding-bottom: 0.0em !important;
   padding-left: 1em;
 }
+
+.menu .menu-text {
+  padding-top: 0.3rem !important;
+  padding-right: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  padding-left: 0.3rem !important;
+}

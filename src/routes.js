@@ -4,7 +4,7 @@ import App from './components/App';
 import HomePage from './components/pages/HomePage';
 import LigaPage from './components/pages/LigaPage';
 import MatchPage from './components/pages/MatchPage';
-//import RoundPage from './components/pages/RoundPage';
+import RoundPage from './components/pages/RoundPage';
 import AboutPage from './components/pages/AboutPage';
 import CoursesPage from './components/course/CoursesPage';
 import ManageCoursePage from './components/course/ManageCoursePage';
@@ -14,6 +14,7 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="liga" component={LigaPage} />
     <Route path="liga/:tid" component={LigaPage} />
+    <Route path="round/:tid/:rid" component={RoundPage} />
     <Route path="match/:tid/:rid/:mid" component={MatchPage} />
     <Route path="courses" component={CoursesPage} />
     <Route path="course/:id" component={ManageCoursePage} />

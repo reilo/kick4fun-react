@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as config from '../../appConfig';
 import Table from '../tournament/Table';
 import Schedule, { ScheduleMode, DisplayMode } from '../tournament/Schedule';
+import Rules from '../tournament/Rules';
 import History from '../tournament/History';
 import { store } from '../../../src/store';
 import { loadTournament } from '../../actions/tournamentActions';
@@ -28,6 +29,14 @@ class HomePage extends React.Component {
 
   render() {
     const { tournament, tournaments, ligaSummary } = this.props;
+    const completedTournaments = tournaments.reduce((res, cur) => {
+      cur.status == "completed" && cur.official == true && res.push(cur);
+      return res;
+    }, []);
+    const progressTournaments = tournaments.reduce((res, cur) => {
+      cur.status == "progress" && cur.official == true && res.push(cur);
+      return res;
+    }, []);
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
@@ -44,19 +53,19 @@ class HomePage extends React.Component {
             <Table rows={tournament && tournament.table} />
           </div>
           <div className="cell small-12 medium-12 large-6 ">
+            <div className="callout success">
+              <h4 >Laufende Turniere</h4>
+              <History tournaments={progressTournaments} />
+            </div>
             <div className="callout secondary">
               <h4 >Abgeschlossene Turniere</h4>
-              <History tournaments={tournaments} />
+              <History tournaments={completedTournaments} />
             </div>
           </div>
           <div className="cell small-12 medium-12 large-6 ">
             <div className="callout primary">
               <h4 >Kickerregeln</h4>
-              {
-                ligaSummary.rules && ligaSummary.rules.map((line, index) =>
-                  <p>{line}</p>
-                )
-              }
+              <Rules />
             </div>
           </div>
         </div>
