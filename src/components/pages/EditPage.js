@@ -4,53 +4,67 @@ import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/store';
 import Schedule, { ScheduleMode, ChangeMode, DisplayMode } from '../tournament/Schedule';
-import Table from '../tournament/Table';
 
-class LigaPage extends React.Component {
+class EditPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     props.params.tid && store.dispatch(tournamentActions.loadTournament(props.params.tid));
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.props.loadActive &&
+      this.props.ligaSummary.activeTournament != nextProps.ligaSummary.activeTournament) {
+      this.setState({ ligaSummary: Object.assign({}, nextProps.ligaSummary) });
+      store.dispatch(tournamentActions.loadTournament(nextProps.ligaSummary.activeTournament));
+    }
     if (this.props.tournament.name != nextProps.tournament.name) {
       this.setState({ tournament: Object.assign({}, nextProps.tournament) });
     }
   }
 
   render() {
-    const { tournament } = this.props;
+    const { tournament, actions } = this.props;
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
-          <div className="cell small-12 medium-12 large-6">
+          <div className="cell small-0 medium-0 large-2" />
+          <div className="cell small-12 medium-12 large-8">
             <h5 className="primary label">{tournament ? tournament.name : "Laden..."}</h5>
             <Schedule
               tournament={tournament}
               mode={ScheduleMode.all}
-              change={ChangeMode.readOnly}
-              display={DisplayMode.default} />
+              change={tournament.status == "progress" ? ChangeMode.modify : ChangeMode.readOnly}
+              display={DisplayMode.allDetails} />
           </div>
-          <div className="cell small-12 medium-12 large-6">
-            <h5 className="primary label">Aktuelle Tabelle</h5>
-            <Table rows={tournament && tournament.table} />
-          </div>
+          <div className="cell small-0 medium-0 large-2" />
+          <div className="cell small-0 medium-0 large-2" />
         </div>
       </div>
     );
   }
 }
 
-LigaPage.propTypes = {
+EditPage.propTypes = {
+  ligaSummary: PropTypes.object.isRequired,
   tournament: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  loadActive: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   const loadActive = !ownProps.params.tid;
   return {
-    tournament: state.tournament
+    ligaSummary: state.ligaSummary,
+    tournament: state.tournament,
+    loadActive: loadActive
   };
 }
 
-export default connect(mapStateToProps)(LigaPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(tournamentActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditPage);

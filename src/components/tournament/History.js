@@ -8,18 +8,14 @@ const History = ({ tournaments }) => {
         a.status > b.status ? -1 : b.status > a.status ? 1 :
           a.completedDate > b.completedDate ? -1 : b.completedDate > a.completedDate ? 1 : 0
       ).map((tournament, index) =>
-        /*tournament.status == "completed" && tournament.official == true &&*/
-        <div>
-          <hr />
-          <Summary key={index} tournament={tournament} />
-        </div>
+        <Summary key={index} tournament={tournament} />
       )}
     </div>
   );
 };
 
 History.propTypes = {
-  tournaments: PropTypes.array // isRequired: warning due to asynchronous loading?
+  tournaments: PropTypes.array.isRequired
 };
 
 export default History;

@@ -8,7 +8,7 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import { loadCourses } from './actions/courseActions';
 import { loadAuthors } from './actions/authorActions';
-import { loadLigaSummary } from './actions/kickerligaActions';
+import { loadLigaSummary, loadPlayerList } from './actions/kickerligaActions';
 import { loadTournament, loadTournamentList } from './actions/tournamentActions';
 
 import './styles/styles.css';
@@ -18,6 +18,7 @@ const store = configureStore();
 store.dispatch(loadCourses());
 store.dispatch(loadAuthors());
 store.dispatch(loadLigaSummary());
+store.dispatch(loadPlayerList());
 store.dispatch(loadTournamentList());
 
 render(

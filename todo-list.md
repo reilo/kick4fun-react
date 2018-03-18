@@ -1,14 +1,13 @@
-Neu laden nach Änderungen
+Store: active tournament
+Neu laden nach Änderungen --> reducer
+- Courses debuggen
 Spielplan Spalten ausrichten
-aktuelles Turnier Details
-Historie details
+weitere Turnier-Details
 Statistik Übersicht mit Links zu Teilnehmern (aktuell/gesamt), Turnieren
-Liga-Templates verarbeiten
-Tabs: Home, Liga, Statistik, Historie, Spielplatz, Info - selektiertes Turnier ohne tab (--> Routing) 
-Turnier beenden --> completed
-Spielplatz: Turniere erstellen
-Teilnehmerverwaltung
-Admin-Bereich (per URL?)
+Bolzplatz: Turniere erstellen, verwalten
+Admin-Bereich
+- Teilnehmerverwaltung, Test-Teilnehmer, Tabelle
+- Widget-Config
 Edit-Modus Turnier
 Icon in Menubar
 Kontakt, E-Mail

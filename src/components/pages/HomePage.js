@@ -41,7 +41,9 @@ class HomePage extends React.Component {
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-12 medium-12 large-6 ">
-            <h5 className="primary label">{tournament ? tournament.name : "Laden..."}</h5>
+            <h5 className="primary label">{tournament ?
+              tournament.name :
+              "Laden..."}</h5>
             <Schedule
               tournament={tournament}
               mode={ScheduleMode.current}

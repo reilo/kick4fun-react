@@ -14,3 +14,17 @@ export function loadLigaSummary() {
     });
   };
 }
+
+export function loadPlayerListSuccess(players) {
+  return { type: types.LOAD_PLAYERLIST_SUCCESS, players };
+}
+
+export function loadPlayerList() {
+  return dispatch => {
+    return KickerligaApi.listPlayers().then(players => {
+      dispatch(loadPlayerListSuccess(players));
+    }).catch(error => {
+      throw (error);
+    });
+  };
+}

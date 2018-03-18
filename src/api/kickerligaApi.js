@@ -14,6 +14,16 @@ class KickerligaApi {
     });
   }
 
+  static listPlayers() {
+    const url = config.API_URL + "players";
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        return fetch(url, { method: 'GET' }).then(
+          response => resolve(response.json())
+        );
+      }, delay);
+    });
+  }
 }
 
 export default KickerligaApi;
