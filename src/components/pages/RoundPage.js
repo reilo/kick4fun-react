@@ -16,6 +16,7 @@ class RoundPage extends React.Component {
 
     this.updateRoundState = this.updateRoundState.bind(this);
     this.updateRound = this.updateRound.bind(this);
+    this.cancel = this.cancel.bind(this);
 
     const tournamentId = this.props.params.tid;
     store.dispatch(tournamentActions.loadTournament(tournamentId));
@@ -30,11 +31,25 @@ class RoundPage extends React.Component {
 
   updateRoundState(event) {
     const field = event.target.name;
+    const val = event.target.value;
+    let errors = this.state.errors;
     let round = this.state.round;
     if (field == "startDate") {
-      round.startDate = event.target.value;
+      round.startDate = val;
+      if (isNaN(Date.parse(val))) {
+        Object.assign(errors, {[field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."});
+      } else {
+        delete errors[field];
+      }
     } else if (field == "endDate") {
-      round.endDate = event.target.value;
+      round.endDate = val;
+      if (isNaN(Date.parse(val))) {
+        Object.assign(errors, {[field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."});
+      } else {
+        delete errors[field];
+      }
+    } else if (field == "password") {
+      round.password = val;
     }
     return this.setState({ round: round });
   }
@@ -45,7 +60,12 @@ class RoundPage extends React.Component {
       this.props.tournament.id,
       this.props.roundId,
       this.state.round);
-    this.context.router.push('/liga');
+    this.context.router.push('/edit/' + this.props.tournament.id);
+  }
+
+  cancel(event) {
+    event.preventDefault();
+    this.context.router.push('/edit/' + this.props.tournament.id);    
   }
 
   render() {
@@ -62,6 +82,8 @@ class RoundPage extends React.Component {
               roundId={roundId}
               onSave={this.updateRound}
               onChange={this.updateRoundState}
+              onCancel={this.cancel}
+              errors={this.state.errors}
             />
           </div>
         </div>
@@ -88,6 +110,7 @@ function mapStateToProps(state, ownProps) {
     JSON.parse(JSON.stringify(state.tournament.rounds[rid])) : {};
   !round.startDate && Object.assign(round, { "startDate": "" });
   !round.endDate && Object.assign(round, { "endDate": "" });
+  !round.password && Object.assign(round, { "password": "" });
   return {
     tournament: state.tournament,
     round: round,

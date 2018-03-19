@@ -57,11 +57,11 @@ class HomePage extends React.Component {
           <div className="cell small-12 medium-12 large-6 ">
             <div className="callout success">
               <h4 >Laufende Turniere</h4>
-              <History tournaments={progressTournaments} />
+              <History tournaments={progressTournaments} ranking />
             </div>
             <div className="callout secondary">
               <h4 >Abgeschlossene Turniere</h4>
-              <History tournaments={completedTournaments} />
+              <History tournaments={completedTournaments} ranking />
             </div>
           </div>
           <div className="cell small-12 medium-12 large-6 ">

@@ -3,11 +3,21 @@ import Player from './Player';
 
 const Players = ({ players }) => {
   return (
-    <div>
+    <table className="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Voller Name</th>
+          <th>Status</th>
+          <th>Aktion</th>
+        </tr>
+      </thead>
+      <tbody>
       {players && players.map((player, index) =>
         <Player player={player} key={index} />
       )}
-    </div>
+      </tbody>
+    </table >
   );
 };
 

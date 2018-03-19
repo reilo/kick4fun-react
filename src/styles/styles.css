@@ -64,3 +64,7 @@ td.number, th.number {
   padding-bottom: 0.3rem !important;
   padding-left: 0.3rem !important;
 }
+
+.button {
+  margin-right: 0.5rem !important;
+}

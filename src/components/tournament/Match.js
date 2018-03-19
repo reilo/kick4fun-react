@@ -14,7 +14,7 @@ const Match = ({ tournament, roundId, matchId, change, display }) => {
   const rstr = r ? r[0] + ":" + r[1] : "-:-";
   const date = new Date(match.date);
   const dateStr = isNaN(date.getTime()) ? "" : date.toLocaleDateString();
-  const showDate = display == DisplayMode.allDetails && dateStr;
+  const showDate = display == DisplayMode.allDetails;
   const editUrl = "/match/" + tournament.id + "/" + roundId + "/" + matchId;
   return (
     <tr>

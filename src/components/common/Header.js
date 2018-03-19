@@ -11,10 +11,10 @@ const Header = () => {
             <IndexLink to="/" activeClassName="active">Home</IndexLink>
           </li>
           <li className="menu-text">
-            <IndexLink to="/edit" activeClassName="active">Edit</IndexLink>
+            <IndexLink to="/admin" activeClassName="active">Admin</IndexLink>
           </li>
           <li className="menu-text">
-            <IndexLink to="/admin" activeClassName="active">Admin</IndexLink>
+            <IndexLink to="/playground" activeClassName="active">Bolzplatz</IndexLink>
           </li>
           <li className="menu-text">
             <Link to="/about" activeClassName="active">Info</Link>

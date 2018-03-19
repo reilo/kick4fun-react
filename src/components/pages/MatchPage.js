@@ -16,6 +16,7 @@ class MatchPage extends React.Component {
 
     this.updateMatchState = this.updateMatchState.bind(this);
     this.updateMatch = this.updateMatch.bind(this);
+    this.cancel = this.cancel.bind(this);
 
     const tournamentId = this.props.params.tid;
     store.dispatch(tournamentActions.loadTournament(tournamentId));
@@ -30,16 +31,25 @@ class MatchPage extends React.Component {
 
   updateMatchState(event) {
     const field = event.target.name;
+    const val = event.target.value;
+    let errors = this.state.errors;
     let match = this.state.match;
     if (field == "date") {
-      match.date = event.target.value;
+      match.date = val;
+      if (isNaN(Date.parse(val))) {
+        Object.assign(errors, { [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben." });
+      } else {
+        delete errors[field];
+      }
     } else if (field.startsWith("set")) {
-      const parts = field.split("-");
+      const parts = field.split("_");
       const s1 = parseInt(parts[1]);
       const s2 = parseInt(parts[2]);
-      match.sets[s1][s2] = parseInt(event.target.value);
+      match.sets[s1][s2] = parseInt(val);
+    } else if (field == "password") {
+      match.password = val;
     }
-    return this.setState({ match: match });
+    return this.setState({ match: match, errors: errors });
   }
 
   updateMatch(event) {
@@ -49,7 +59,12 @@ class MatchPage extends React.Component {
       this.props.roundId,
       this.props.matchId,
       this.state.match);
-    this.context.router.push('/liga');
+    this.context.router.push('/edit/' + this.props.tournament.id);
+  }
+
+  cancel(event) {
+    event.preventDefault();
+    this.context.router.push('/edit/' + this.props.tournament.id);
   }
 
   render() {
@@ -67,6 +82,8 @@ class MatchPage extends React.Component {
               matchId={matchId}
               onSave={this.updateMatch}
               onChange={this.updateMatchState}
+              onCancel={this.cancel}
+              errors={this.state.errors}
             />
           </div>
         </div>
@@ -96,6 +113,7 @@ function mapStateToProps(state, ownProps) {
   !match.date && Object.assign(match, { "date": "" });
   !match.player && Object.assign(match, { "player": [["", ""], ["", ""]] });
   !match.sets && Object.assign(match, { "sets": [[0, 0], [0, 0], [0, 0]] });
+  !match.password && Object.assign(match, { "password": "" });
   return {
     tournament: state.tournament,
     match: match,

@@ -25,9 +25,16 @@ class ManageCoursePage extends React.Component {
 
   updateCourseState(event) {
     const field = event.target.name;
+    const val = event.target.value;
     let course = this.state.course;
+    let errors = this.state.errors;
     course[field] = event.target.value;
-    return this.setState({ course: course });
+    if (!val) {
+       Object.assign(errors, { [field]: "Leerer Wert ist nicht erlaubt." });
+    } else {
+      delete errors[field];
+    }
+    return this.setState({ course: course, errors: errors });
   }
 
   saveCourse(event) {

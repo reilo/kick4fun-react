@@ -1,24 +1,26 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const Summary = ({ tournament }) => {
+const Summary = ({ tournament, editMode, ranking }) => {
+  const url = editMode ? '/edit/' : '/liga/';
   return (
-    tournament.ranking ? 
+    ranking && tournament.ranking ? 
     <div>
       <hr/>
-      <h5><Link to={'/liga/' + tournament.id}>{tournament.name}</Link></h5>
+      <h5><Link to={url + tournament.id}>{tournament.name}</Link></h5>
       <p>1. {tournament.ranking[0]} - 2. {tournament.ranking[1]} - 3. {tournament.ranking[2]}</p>
     </div>
     :
     <div>
-      <hr/>
-      <h5><Link to={'/liga/' + tournament.id}>{tournament.name}</Link></h5>
+      <h5><Link to={url + tournament.id}>{tournament.name}</Link></h5>
     </div>
   );
 };
 
 Summary.propTypes = {
-  tournament: PropTypes.object.isRequired
+  tournament: PropTypes.object.isRequired,
+  editMode: PropTypes.bool,
+  ranking: PropTypes.bool
 };
 
 export default Summary;

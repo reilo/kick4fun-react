@@ -33,7 +33,7 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) =
         error={errors.length} />
       <button
         type="button"
-        disbled={loading}
+        disabled={loading || Object.keys(errors).length}
         className="button"
         onClick={onSave}>
         {loading ? 'Saving...' : 'Save'}

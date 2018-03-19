@@ -10,6 +10,7 @@ import { loadCourses } from './actions/courseActions';
 import { loadAuthors } from './actions/authorActions';
 import { loadLigaSummary, loadPlayerList } from './actions/kickerligaActions';
 import { loadTournament, loadTournamentList } from './actions/tournamentActions';
+import { loadTemplateList } from './actions/templateActions';
 
 import './styles/styles.css';
 import '../node_modules/foundation-sites/dist/css/foundation.min.css';
@@ -20,6 +21,7 @@ store.dispatch(loadAuthors());
 store.dispatch(loadLigaSummary());
 store.dispatch(loadPlayerList());
 store.dispatch(loadTournamentList());
+store.dispatch(loadTemplateList());
 
 render(
   <Provider store={store}>

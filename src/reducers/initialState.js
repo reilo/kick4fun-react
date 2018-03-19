@@ -4,5 +4,6 @@ export default {
   ligaSummary: {},
   players: [],
   tournament: {},
-  tournaments: []
+  tournaments: [],
+  templates: []
 };

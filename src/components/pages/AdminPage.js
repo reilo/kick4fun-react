@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Players from '../tournament/Players';
+import History from '../tournament/History';
 
 // use class instead of function because of hot reloading restrictions
 class AdminPage extends React.Component {
@@ -9,25 +10,37 @@ class AdminPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.props.tournaments.length != nextProps.tournaments.length) {
+      this.setState({ tournaments: nextProps.tournaments.slice() });
+    }
     if (this.props.players.length != nextProps.players.length) {
       this.setState({ players: nextProps.players.slice() });
     }
   }
 
   render() {
-    const { players } = this.props;
+    const { tournaments, players } = this.props;
+    const progressTournaments = tournaments.reduce((res, cur) => {
+      cur.status == "progress" && cur.official == true && res.push(cur);
+      return res;
+    }, []);
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
-          <div className="cell small-0 medium-0 large-2" />
-          <div className="cell small-12 medium-12 large-8">
-          <h5 className="primary label">{"Teilnehmerliste"}</h5>
-            <div className="callout warning">
-              <h4>Teilnehmerliste</h4>
-              <Players players={players} />
+          <div className="cell small-12 medium-12 large-6">
+            <h5 className="primary label">{"Spieleingabe & Ligaverwaltung"}</h5>
+            <div className="callout primary">
+              <h5>Ergebnisse eintragen</h5>
+              <p>Hier kannst du Spielergebnisse für die aktuellen Turniere eingeben.
+                Klicke unten eine Liga an, um in den Bearbeitungsmodus zu gelangen.
+                Du kannst hier auch die Termine anpassen.</p>
             </div>
+            <History tournaments={progressTournaments} editMode />
           </div>
-          <div className="cell small-0 medium-0 large-2" />
+          <div className="cell small-12 medium-12 large-6">
+            <h5 className="primary label">{"Spielerverwaltung"}</h5>
+            <Players players={players} />
+          </div>
         </div>
       </div>
     );
@@ -35,11 +48,13 @@ class AdminPage extends React.Component {
 }
 
 AdminPage.propTypes = {
+  tournaments: PropTypes.array,
   players: PropTypes.array
 };
 
 function mapStateToProps(state, ownProps) {
   return {
+    tournaments: state.tournaments,
     players: state.players
   };
 }

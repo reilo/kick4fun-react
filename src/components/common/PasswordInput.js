@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
+const PasswordInput = ({ name, label, onChange, value, error }) => {
   const errorText = "errorText_" + name;
   return (
     <div className="small-12 columns">
@@ -8,7 +8,6 @@ const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
         <input
           type="text"
           name={name}
-          placeholder={placeholder}
           aria-describedby={errorText}
           value={value}
           onChange={onChange} />
@@ -18,13 +17,12 @@ const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
   );
 };
 
-TextInput.propTypes = {
+PasswordInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
   value: PropTypes.string,
   error: PropTypes.string
 };
 
-export default TextInput;
+export default PasswordInput;
