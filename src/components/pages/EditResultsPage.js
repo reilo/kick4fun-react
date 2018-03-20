@@ -5,7 +5,7 @@ import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/store';
 import Schedule, { ScheduleMode, ChangeMode, DisplayMode } from '../tournament/Schedule';
 
-class EditPage extends React.Component {
+class EditResultsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     props.params.tid && store.dispatch(tournamentActions.loadTournament(props.params.tid));
@@ -44,7 +44,7 @@ class EditPage extends React.Component {
   }
 }
 
-EditPage.propTypes = {
+EditResultsPage.propTypes = {
   ligaSummary: PropTypes.object.isRequired,
   tournament: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
@@ -67,4 +67,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditResultsPage);

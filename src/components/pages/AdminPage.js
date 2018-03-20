@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Players from '../tournament/Players';
-import History from '../tournament/History';
+import PlayerTable from '../tournament/PlayerTable';
+import TournamentList from '../tournament/TournamentList';
 
 // use class instead of function because of hot reloading restrictions
 class AdminPage extends React.Component {
@@ -35,11 +35,11 @@ class AdminPage extends React.Component {
                 Klicke unten eine Liga an, um in den Bearbeitungsmodus zu gelangen.
                 Du kannst hier auch die Termine anpassen.</p>
             </div>
-            <History tournaments={progressTournaments} editMode />
+            <TournamentList tournaments={progressTournaments} editMode />
           </div>
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{"Spielerverwaltung"}</h5>
-            <Players players={players} />
+            <PlayerTable players={players} />
           </div>
         </div>
       </div>

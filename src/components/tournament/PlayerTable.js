@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import Player from './Player';
+import PlayerRow from './PlayerRow';
 
-const Players = ({ players }) => {
+const PlayerTable = ({ players }) => {
   return (
     <table className="table">
       <thead>
@@ -14,15 +14,15 @@ const Players = ({ players }) => {
       </thead>
       <tbody>
       {players && players.map((player, index) =>
-        <Player player={player} key={index} />
+        <PlayerRow player={player} key={index} />
       )}
       </tbody>
     </table >
   );
 };
 
-Players.propTypes = {
+PlayerTable.propTypes = {
   players: PropTypes.array.isRequired
 };
 
-export default Players;
+export default PlayerTable;

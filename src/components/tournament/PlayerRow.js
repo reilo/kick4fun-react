@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
-//import { Link } from 'react-router';
 
-const Player = ({ player }) => {
+const PlayerRow = ({ player }) => {
   const labelClass = player.active ? "success label" : "alert label";
   const label = player.active ? "aktiv" : "inaktiv";
   return (
@@ -21,8 +20,8 @@ const Player = ({ player }) => {
   );
 };
 
-Player.propTypes = {
+PlayerRow.propTypes = {
   player: PropTypes.object.isRequired
 };
 
-export default Player;
+export default PlayerRow;

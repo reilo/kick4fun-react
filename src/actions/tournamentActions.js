@@ -34,6 +34,22 @@ export function loadTournament(id) {
   };
 }
 
+export function createTournamentSuccess(tournament) {
+  return { type: types.CREATE_TOURNAMENT_SUCCESS, tournament };  
+}
+
+export function createTournament(createInfo) {
+  return dispatch => {
+    dispatch(beginAjaxCall());
+    return TournamentApi.createTournament(createInfo).then(tournament => {
+      dispatch(createTournamentSuccess(tournament));
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw (error);
+    });
+  };
+}
+
 export function updateMatchSuccess() {
   return { type: types.UPDATE_MATCH_SUCCESS };
 }

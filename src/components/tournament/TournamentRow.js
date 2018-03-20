@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 //import { Link } from 'react-router';
 
-const Tournament = ({ tournament }) => {
+const TournamentRow = ({ tournament }) => {
   const openUrl = "/liga/" + tournament.id; 
   const editUrl = "/edit/" + tournament.id;
   return (
@@ -13,8 +13,8 @@ const Tournament = ({ tournament }) => {
   );
 };
 
-Tournament.propTypes = {
+TournamentRow.propTypes = {
   tournament: PropTypes.object.isRequired
 };
 
-export default Tournament;
+export default TournamentRow;

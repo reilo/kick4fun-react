@@ -6,7 +6,7 @@ import { store } from '../../../src/store';
 import Schedule, { ScheduleMode, ChangeMode, DisplayMode } from '../tournament/Schedule';
 import Table from '../tournament/Table';
 
-class LigaPage extends React.Component {
+class ResultsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     props.params.tid && store.dispatch(tournamentActions.loadTournament(props.params.tid));
@@ -41,7 +41,7 @@ class LigaPage extends React.Component {
   }
 }
 
-LigaPage.propTypes = {
+ResultsPage.propTypes = {
   tournament: PropTypes.object.isRequired,
   params: PropTypes.object.isRequired
 };
@@ -53,4 +53,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(LigaPage);
+export default connect(mapStateToProps)(ResultsPage);

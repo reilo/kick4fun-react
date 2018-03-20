@@ -26,6 +26,21 @@ class TournamentApi {
     });
   }
 
+  static createTournament(body) {
+    const url = config.API_URL + "tournaments";
+    return new Promise((resolve, reject) => {
+      setTimeout(() => fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      }).then(
+        response => resolve(response.json())
+      ).catch(
+        error => reject(error)
+      ), delay);
+    });
+  }
+
   static updateMatch(tid, rid, mid, body) {
     const url = config.API_URL + "tournaments/" + tid + "/rounds/" + rid + "/matches/" + mid;
     return new Promise((resolve, reject) => {

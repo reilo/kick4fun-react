@@ -67,39 +67,39 @@ class MatchPage extends React.Component {
         toastr.error(error);
         this.setState({ saving: false });
       });
-    }
+  }
 
   redirect() {
-          this.setState({ saving: false });
-          toastr.success('Spiel gespeichert');
-          this.context.router.push('/edit/' + this.props.tournament.id);
-        }
+    this.setState({ saving: false });
+    toastr.success('Spiel gespeichert');
+    this.context.router.push('/edit/' + this.props.tournament.id);
+  }
 
   cancel(event) {
-          event.preventDefault();
-          this.context.router.push('/edit/' + this.props.tournament.id);
-        }
+    event.preventDefault();
+    this.context.router.push('/edit/' + this.props.tournament.id);
+  }
 
   render() {
-          const { tournament, match, roundId, matchId } = this.props;
-          return(
-      <div className = "grid-container" >
-              <div className="grid-x grid-margin-x grid-margin-y">
-                <div className="cell small-12 medium-12 large-8">
-                  <h5 className="primary label">
-                    {tournament ? tournament.name : "Laden..."}
-                  </h5>
-                  <MatchForm
-                    match={this.state.match}
-                    roundId={roundId}
-                    matchId={matchId}
-                    onSave={this.updateMatch}
-                    onChange={this.updateMatchState}
-                    onCancel={this.cancel}
-                    errors={this.state.errors}
-                    saving={this.state.saving} />
-                </div>
-              </div>
+    const { tournament, match, roundId, matchId } = this.props;
+    return (
+      <div className="grid-container" >
+        <div className="grid-x grid-margin-x grid-margin-y">
+          <div className="cell small-12 medium-12 large-8">
+            <h5 className="primary label">
+              {tournament ? tournament.name : "Laden..."}
+            </h5>
+            <MatchForm
+              match={this.state.match}
+              roundId={roundId}
+              matchId={matchId}
+              onSave={this.updateMatch}
+              onChange={this.updateMatchState}
+              onCancel={this.cancel}
+              errors={this.state.errors}
+              saving={this.state.saving} />
+          </div>
+        </div>
       </div>
     );
   }

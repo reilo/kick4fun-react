@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const Summary = ({ tournament, editMode, ranking }) => {
+const TournamentItem = ({ tournament, editMode, ranking }) => {
   const url = editMode ? '/edit/' : '/liga/';
   return (
     ranking && tournament.ranking ? 
@@ -17,10 +17,10 @@ const Summary = ({ tournament, editMode, ranking }) => {
   );
 };
 
-Summary.propTypes = {
+TournamentItem.propTypes = {
   tournament: PropTypes.object.isRequired,
   editMode: PropTypes.bool,
   ranking: PropTypes.bool
 };
 
-export default Summary;
+export default TournamentItem;

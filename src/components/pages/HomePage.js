@@ -4,7 +4,7 @@ import * as config from '../../appConfig';
 import Table from '../tournament/Table';
 import Schedule, { ScheduleMode, DisplayMode } from '../tournament/Schedule';
 import Rules from '../tournament/Rules';
-import History from '../tournament/History';
+import TournamentList from '../tournament/TournamentList';
 import { store } from '../../../src/store';
 import { loadTournament } from '../../actions/tournamentActions';
 
@@ -57,11 +57,11 @@ class HomePage extends React.Component {
           <div className="cell small-12 medium-12 large-6 ">
             <div className="callout success">
               <h4 >Laufende Turniere</h4>
-              <History tournaments={progressTournaments} ranking />
+              <TournamentList tournaments={progressTournaments} ranking />
             </div>
             <div className="callout secondary">
               <h4 >Abgeschlossene Turniere</h4>
-              <History tournaments={completedTournaments} ranking />
+              <TournamentList tournaments={completedTournaments} ranking />
             </div>
           </div>
           <div className="cell small-12 medium-12 large-6 ">

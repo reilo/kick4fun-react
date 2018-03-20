@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import Tournament from './Tournament';
+import TournamentRow from './TournamentRow';
 
-const Tournaments = ({ tournaments }) => {
+const TournamentTable = ({ tournaments }) => {
   return (
     <table className="table">
       <thead>
@@ -13,15 +13,15 @@ const Tournaments = ({ tournaments }) => {
       </thead>
       <tbody>
         {tournaments && tournaments.map((tournament, index) =>
-          <Tournament key={index} tournament={tournament} />
+          <TournamentRow key={index} tournament={tournament} />
         )}
       </tbody>
     </table >
   );
 };
 
-Tournaments.propTypes = {
+TournamentTable.propTypes = {
   tournaments: PropTypes.array.isRequired
 };
 
-export default Tournaments;
+export default TournamentTable;

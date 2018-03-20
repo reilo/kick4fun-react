@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Tournaments from '../tournament/Tournaments';
+import TournamentTable from '../tournament/TournamentTable';
 import { browserHistory } from 'react-router';
 
 // use class instead of function because of hot reloading restrictions
@@ -22,7 +22,7 @@ class PlaygroundPage extends React.Component {
   render() {
     const { tournaments } = this.props;
     const progressTournaments = tournaments.reduce((res, cur) => {
-      cur.status == "progress" && cur.official == false && res.push(cur);
+      cur.status == "progress" && !cur.official && res.push(cur);
       return res;
     }, []);
     return (
@@ -42,7 +42,7 @@ class PlaygroundPage extends React.Component {
               onClick={this.redirectToAddTournamentPage}>
               Neues Turnier
             </button>
-            <Tournaments tournaments={progressTournaments} editMode />
+            <TournamentTable tournaments={progressTournaments} editMode />
           </div>
         </div>
       </div>

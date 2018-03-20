@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Template from '../tournament/Template';
 import * as config from '../../appConfig';
+import TemplateTable from '../tournament/TemplateTable';
 
 // use class instead of function because of hot reloading restrictions
-class TemplatesPage extends React.Component {
+class SelectTemplatePage extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
@@ -23,21 +23,7 @@ class TemplatesPage extends React.Component {
           <div className="cell small-12 medium-12 large-12 ">
             <h5 className="primary label">Neues Turnier</h5>
             <h5 className="primary label">Schritt 1: Vorlage auswählen</h5>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Sp.</th>
-                  <th>Beschreibung</th>
-                  <th>Aktion</th>
-                </tr>
-              </thead>
-              <tbody>
-                {templates && templates.map((template, index) =>
-                  <Template key={index} template={template} />
-                )}
-              </tbody>
-            </table >
+            <TemplateTable templates={templates} />
           </div>
         </div>
       </div>
@@ -45,7 +31,7 @@ class TemplatesPage extends React.Component {
   }
 }
 
-TemplatesPage.propTypes = {
+SelectTemplatePage.propTypes = {
   templates: PropTypes.array
 };
 
@@ -55,4 +41,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(TemplatesPage);
+export default connect(mapStateToProps)(SelectTemplatePage);

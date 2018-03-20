@@ -6,8 +6,6 @@ import * as config from './appConfig';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
-import { loadCourses } from './actions/courseActions';
-import { loadAuthors } from './actions/authorActions';
 import { loadLigaSummary, loadPlayerList } from './actions/kickerligaActions';
 import { loadTournament, loadTournamentList } from './actions/tournamentActions';
 import { loadTemplateList } from './actions/templateActions';
@@ -18,8 +16,6 @@ import '../node_modules/foundation-sites/dist/css/foundation.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();
-store.dispatch(loadCourses()).catch(error => { toastr.error(error); });
-store.dispatch(loadAuthors()).catch(error => { toastr.error(error); });
 store.dispatch(loadLigaSummary()).catch(error => { toastr.error(error); });
 store.dispatch(loadPlayerList()).catch(error => { toastr.error(error); });
 store.dispatch(loadTournamentList()).catch(error => { toastr.error(error); });
