@@ -11,17 +11,19 @@ import { loadAuthors } from './actions/authorActions';
 import { loadLigaSummary, loadPlayerList } from './actions/kickerligaActions';
 import { loadTournament, loadTournamentList } from './actions/tournamentActions';
 import { loadTemplateList } from './actions/templateActions';
+import toastr from 'toastr';
 
 import './styles/styles.css';
 import '../node_modules/foundation-sites/dist/css/foundation.min.css';
+import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();
-store.dispatch(loadCourses());
-store.dispatch(loadAuthors());
-store.dispatch(loadLigaSummary());
-store.dispatch(loadPlayerList());
-store.dispatch(loadTournamentList());
-store.dispatch(loadTemplateList());
+store.dispatch(loadCourses()).catch(error => { toastr.error(error); });
+store.dispatch(loadAuthors()).catch(error => { toastr.error(error); });
+store.dispatch(loadLigaSummary()).catch(error => { toastr.error(error); });
+store.dispatch(loadPlayerList()).catch(error => { toastr.error(error); });
+store.dispatch(loadTournamentList()).catch(error => { toastr.error(error); });
+store.dispatch(loadTemplateList()).catch(error => { toastr.error(error); });
 
 render(
   <Provider store={store}>

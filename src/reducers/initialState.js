@@ -5,5 +5,6 @@ export default {
   players: [],
   tournament: {},
   tournaments: [],
-  templates: []
+  templates: [],
+  ajaxCallsInProgress: 0
 };

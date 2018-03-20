@@ -6,6 +6,7 @@ import tournament from './tournamentReducer';
 import ligaSummary from './kickerligaReducer';
 import players from './playersReducer';
 import templates from './templatesReducer';
+import ajaxCallsInProgress from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
   courses,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   players,
   tournaments,
   tournament,
-  templates
+  templates,
+  ajaxCallsInProgress
 });
 
 export default rootReducer;

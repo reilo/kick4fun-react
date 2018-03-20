@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/store';
 import MatchForm from '../tournament/MatchForm';
+import toastr from 'toastr';
 
 class MatchPage extends React.Component {
   constructor(props, context) {
@@ -11,7 +12,8 @@ class MatchPage extends React.Component {
 
     this.state = {
       match: Object.assign({}, this.props.match),
-      errors: {}
+      errors: {},
+      saving: false
     };
 
     this.updateMatchState = this.updateMatchState.bind(this);
@@ -54,39 +56,50 @@ class MatchPage extends React.Component {
 
   updateMatch(event) {
     event.preventDefault();
+    this.setState({ saving: true });
     this.props.actions.updateMatch(
       this.props.tournament.id,
       this.props.roundId,
       this.props.matchId,
-      this.state.match);
-    this.context.router.push('/edit/' + this.props.tournament.id);
-  }
+      this.state.match)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({ saving: false });
+      });
+    }
+
+  redirect() {
+          this.setState({ saving: false });
+          toastr.success('Spiel gespeichert');
+          this.context.router.push('/edit/' + this.props.tournament.id);
+        }
 
   cancel(event) {
-    event.preventDefault();
-    this.context.router.push('/edit/' + this.props.tournament.id);
-  }
+          event.preventDefault();
+          this.context.router.push('/edit/' + this.props.tournament.id);
+        }
 
   render() {
-    const { tournament, match, roundId, matchId } = this.props;
-    return (
-      <div className="grid-container">
-        <div className="grid-x grid-margin-x grid-margin-y">
-          <div className="cell small-12 medium-12 large-8">
-            <h5 className="primary label">
-              {tournament ? tournament.name : "Laden..."}
-            </h5>
-            <MatchForm
-              match={this.state.match}
-              roundId={roundId}
-              matchId={matchId}
-              onSave={this.updateMatch}
-              onChange={this.updateMatchState}
-              onCancel={this.cancel}
-              errors={this.state.errors}
-            />
-          </div>
-        </div>
+          const { tournament, match, roundId, matchId } = this.props;
+          return(
+      <div className = "grid-container" >
+              <div className="grid-x grid-margin-x grid-margin-y">
+                <div className="cell small-12 medium-12 large-8">
+                  <h5 className="primary label">
+                    {tournament ? tournament.name : "Laden..."}
+                  </h5>
+                  <MatchForm
+                    match={this.state.match}
+                    roundId={roundId}
+                    matchId={matchId}
+                    onSave={this.updateMatch}
+                    onChange={this.updateMatchState}
+                    onCancel={this.cancel}
+                    errors={this.state.errors}
+                    saving={this.state.saving} />
+                </div>
+              </div>
       </div>
     );
   }

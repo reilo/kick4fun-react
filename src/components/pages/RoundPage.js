@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/store';
 import RoundForm from '../tournament/RoundForm';
+import toastr from 'toastr';
 
 class RoundPage extends React.Component {
   constructor(props, context) {
@@ -11,7 +12,8 @@ class RoundPage extends React.Component {
 
     this.state = {
       round: Object.assign({}, this.props.round),
-      errors: {}
+      errors: {},
+      saving: false
     };
 
     this.updateRoundState = this.updateRoundState.bind(this);
@@ -37,14 +39,14 @@ class RoundPage extends React.Component {
     if (field == "startDate") {
       round.startDate = val;
       if (isNaN(Date.parse(val))) {
-        Object.assign(errors, {[field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."});
+        Object.assign(errors, { [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben." });
       } else {
         delete errors[field];
       }
     } else if (field == "endDate") {
       round.endDate = val;
       if (isNaN(Date.parse(val))) {
-        Object.assign(errors, {[field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."});
+        Object.assign(errors, { [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben." });
       } else {
         delete errors[field];
       }
@@ -56,16 +58,27 @@ class RoundPage extends React.Component {
 
   updateRound(event) {
     event.preventDefault();
+    this.setState({ saving: true });
     this.props.actions.updateRound(
       this.props.tournament.id,
       this.props.roundId,
-      this.state.round);
+      this.state.round)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({ saving: false });
+      });
+  }
+
+  redirect() {
+    this.setState({ saving: false });
+    toastr.success('Runde gespeichert');
     this.context.router.push('/edit/' + this.props.tournament.id);
   }
 
   cancel(event) {
     event.preventDefault();
-    this.context.router.push('/edit/' + this.props.tournament.id);    
+    this.context.router.push('/edit/' + this.props.tournament.id);
   }
 
   render() {
@@ -84,6 +97,7 @@ class RoundPage extends React.Component {
               onChange={this.updateRoundState}
               onCancel={this.cancel}
               errors={this.state.errors}
+              saving={this.state.saving}
             />
           </div>
         </div>

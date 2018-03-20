@@ -5,8 +5,6 @@ export default function ligaSummaryReducer(state = initialState.ligaSummary, act
   switch (action.type) {
     case types.LOAD_LIGASUMMARY_SUCCESS:
       return action.ligaSummary;
-    case types.LOAD_LIGASUMMARY_FAILURE:
-      return Object.assign({}, { error: action.error });
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import TextInput from '../common/TextInput';
 import PasswordInput from '../common/PasswordInput';
 
-const RoundForm = ({ round, onChange, onSave, onCancel, roundId, loading, errors }) => {
+const RoundForm = ({ round, onChange, onSave, onCancel, roundId, saving, errors }) => {
   return (
     <form>
       <h5 className="primary label">Bearbeiten: Runde {roundId + 1} - Details</h5>
@@ -26,10 +26,10 @@ const RoundForm = ({ round, onChange, onSave, onCancel, roundId, loading, errors
         error={errors.password} />
       <button
         type="button"
-        disabled={loading || Object.keys(errors).length}
+        disabled={saving || Object.keys(errors).length}
         className="button"
         onClick={onSave}>
-        {loading ? 'Speichern...' : 'Speichern'}
+        {saving ? 'Speichern...' : 'Speichern'}
       </button>
       <button
         type="button"
@@ -48,7 +48,7 @@ RoundForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  saving: PropTypes.bool.isRequired,
   errors: React.PropTypes.object
 };
 

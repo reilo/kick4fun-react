@@ -3,7 +3,7 @@ import SelectInput from '../common/SelectInput';
 import TextInput from '../common/TextInput';
 import PasswordInput from '../common/PasswordInput';
 
-const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, loading, errors }) => {
+const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, saving, errors }) => {
   const p = match.player;
   const s = match.sets;
   const defaultOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => {
@@ -106,10 +106,10 @@ const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, loadin
           error={errors.password} />
         <button
           type="button"
-          disabled={loading || Object.keys(errors).length}
+          disabled={saving || Object.keys(errors).length}
           className="button"
           onClick={onSave}>
-          {loading ? 'Speichern...' : 'Speichern'}
+          {saving ? 'Speichern...' : 'Speichern'}
         </button>
         <button
           type="button"
@@ -130,7 +130,7 @@ MatchForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  saving: PropTypes.bool.isRequired,
   errors: React.PropTypes.object
 };
 

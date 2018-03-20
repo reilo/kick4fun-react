@@ -5,16 +5,10 @@ export default function tournamentReducer(state = initialState.tournament, actio
   switch (action.type) {
     case types.LOAD_TOURNAMENT_SUCCESS:
       return action.tournament;
-    case types.LOAD_TOURNAMENT_FAILURE:
-      return Object.assign({}, { error: action.error });
     case types.UPDATE_MATCH_SUCCESS:
-      return action.tournament;
-    case types.UPDATE_MATCH_FAILURE:
-      return Object.assign({}, { error: action.error });
+      return state;
     case types.UPDATE_ROUND_SUCCESS:
-      return action.tournament;
-    case types.UPDATE_ROUND_FAILURE:
-      return Object.assign({}, { error: action.error });
+      return state;
     default:
       return state;
   }

@@ -5,8 +5,6 @@ export default function tournamentsReducer(state = initialState.tournaments, act
   switch (action.type) {
     case types.LOAD_TOURNAMENTLIST_SUCCESS:
       return action.tournaments;
-    case types.LOAD_TOURNAMENTLIST_FAILURE:
-      return Object.assign({}, { error: action.error });
     default:
       return state;
   }

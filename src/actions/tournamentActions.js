@@ -1,20 +1,19 @@
 import TournamentApi from '../api/tournamentApi';
 import * as types from './actionTypes';
+import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 export function loadTournamentListSuccess(tournaments) {
   return { type: types.LOAD_TOURNAMENTLIST_SUCCESS, tournaments };
 }
 
-export function loadTournamentListFail(error) {
-  return { type: types.LOAD_TOURNAMENTLIST_FAILURE, error };
-}
-
 export function loadTournamentList() {
   return dispatch => {
+    dispatch(beginAjaxCall());
     return TournamentApi.listTournaments().then(tournaments => {
       dispatch(loadTournamentListSuccess(tournaments));
     }).catch(error => {
-      dispatch(loadTournamentListFail(error));
+      dispatch(ajaxCallError(error));
+      throw (error);
     });
   };
 }
@@ -23,16 +22,14 @@ export function loadTournamentSuccess(tournament) {
   return { type: types.LOAD_TOURNAMENT_SUCCESS, tournament };
 }
 
-export function loadTournamentFail(error) {
-  return { type: types.LOAD_TOURNAMENT_FAILURE, error };
-}
-
 export function loadTournament(id) {
   return dispatch => {
+    dispatch(beginAjaxCall());
     return TournamentApi.getTournament(id).then(tournament => {
       dispatch(loadTournamentSuccess(tournament));
     }).catch(error => {
-      dispatch(loadTournamentFail(error));
+      dispatch(ajaxCallError(error));
+      throw (error);
     });
   };
 }
@@ -41,16 +38,14 @@ export function updateMatchSuccess() {
   return { type: types.UPDATE_MATCH_SUCCESS };
 }
 
-export function updateMatchFail(error) {
-  return { type: types.UPDATE_MATCH_FAILURE, error };
-}
-
 export function updateMatch(tid, rid, mid, match) {
   return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
     return TournamentApi.updateMatch(tid, rid, mid, match).then(() => {
       dispatch(updateMatchSuccess());
     }).catch(error => {
-      dispatch(updateMatchFail(error));
+      dispatch(ajaxCallError(error));
+      throw (error);
     });
   };
 }
@@ -59,16 +54,14 @@ export function updateRoundSuccess() {
   return { type: types.UPDATE_ROUND_SUCCESS };
 }
 
-export function updateRoundFail(error) {
-  return { type: types.UPDATE_ROUND_FAILURE, error };
-}
-
 export function updateRound(tid, rid, round) {
   return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
     return TournamentApi.updateRound(tid, rid, round).then(() => {
       dispatch(updateRoundSuccess());
     }).catch(error => {
-      dispatch(updateRoundFail(error));
+      dispatch(ajaxCallError(error));
+      throw (error);
     });
   };
 }

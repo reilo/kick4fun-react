@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
+import Progress from './Progress';
 
-const Header = () => {
+const Header = ({ loading }) => {
   return (
     <div className="top-bar">
       <div className="top-bar-left">
@@ -19,10 +20,17 @@ const Header = () => {
           <li className="menu-text">
             <Link to="/about" activeClassName="active">Info</Link>
           </li>
+          <li className="menu-text">
+            {loading && <Progress interval={125} dots={10} />}
+          </li>
         </ul>
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  loading: PropTypes.bool.isRequired
 };
 
 export default Header;
