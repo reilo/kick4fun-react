@@ -9,7 +9,6 @@ const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, saving
   const defaultOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => {
     return { value: num, text: num.toString() };
   });
-  const matchDate = match.date || (new Date()).toISOString().split('T')[0];
   return (
     <div>
       <form>
@@ -17,7 +16,7 @@ const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, saving
         <TextInput
           name="date"
           label="Spieldatum"
-          value={matchDate}
+          value={match.date}
           onChange={onChange}
           error={errors.date} />
         <table className="table">

@@ -39,14 +39,18 @@ class RoundPage extends React.Component {
     if (field == "startDate") {
       round.startDate = val;
       if (isNaN(Date.parse(val))) {
-        Object.assign(errors, { [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben." });
+        Object.assign(errors, {
+          [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
+        });
       } else {
         delete errors[field];
       }
     } else if (field == "endDate") {
       round.endDate = val;
       if (isNaN(Date.parse(val))) {
-        Object.assign(errors, { [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben." });
+        Object.assign(errors, {
+          [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
+        });
       } else {
         delete errors[field];
       }
@@ -122,8 +126,12 @@ function mapStateToProps(state, ownProps) {
   const rid = parseInt(ownProps.params.rid);
   const round = state.tournament.rounds ?
     JSON.parse(JSON.stringify(state.tournament.rounds[rid])) : {};
-  !round.startDate && Object.assign(round, { "startDate": "" });
-  !round.endDate && Object.assign(round, { "endDate": "" });
+  !round.startDate && Object.assign(round, {
+    "startDate": (new Date()).toISOString().split('T')[0]
+  });
+  !round.endDate && Object.assign(round, {
+    "endDate": (new Date()).toISOString().split('T')[0]
+  });
   !round.password && Object.assign(round, { "password": "" });
   return {
     tournament: state.tournament,

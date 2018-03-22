@@ -20,20 +20,21 @@ class ResultsPage extends React.Component {
 
   render() {
     const { tournament } = this.props;
+    const t = tournament;
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-12 medium-12 large-6">
-            <h5 className="primary label">{tournament ? tournament.name : "Laden..."}</h5>
+            <h5 className="primary label">{t ? t.name : "Laden..."}</h5>
             <Schedule
-              tournament={tournament}
+              tournament={t}
               mode={ScheduleMode.all}
               change={ChangeMode.readOnly}
               display={DisplayMode.default} />
           </div>
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">Aktuelle Tabelle</h5>
-            <Table rows={tournament && tournament.table} />
+            <Table rows={t && t.table} />
           </div>
         </div>
       </div>

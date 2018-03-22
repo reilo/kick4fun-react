@@ -8,7 +8,11 @@ const TournamentList = ({ tournaments, editMode, ranking }) => {
         a.status > b.status ? -1 : b.status > a.status ? 1 :
           a.completedDate > b.completedDate ? -1 : b.completedDate > a.completedDate ? 1 : 0
       ).map((tournament, index) =>
-        <TournamentItem key={index} tournament={tournament} editMode={editMode} ranking={ranking} />
+        <TournamentItem
+          key={index}
+          tournament={tournament}
+          editMode={editMode}
+          ranking={ranking} />
       )}
     </div>
   );

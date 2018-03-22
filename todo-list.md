@@ -1,5 +1,8 @@
 Turnier erstellen fertig machen
-Teilnehmer auswählen
+- server check
+- teilnehmer mischen
+- bak ja/nein
+- official, fun, test
 
 Edit-Modus Turnier - Name, official, status
 

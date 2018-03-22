@@ -39,7 +39,9 @@ class MatchPage extends React.Component {
     if (field == "date") {
       match.date = val;
       if (isNaN(Date.parse(val))) {
-        Object.assign(errors, { [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben." });
+        Object.assign(errors, {
+          [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
+        });
       } else {
         delete errors[field];
       }
@@ -123,7 +125,9 @@ function mapStateToProps(state, ownProps) {
   const mid = parseInt(ownProps.params.mid);
   const match = state.tournament.rounds ?
     JSON.parse(JSON.stringify(state.tournament.rounds[rid].matches[mid])) : {};
-  !match.date && Object.assign(match, { "date": "" });
+  !match.date && Object.assign(match, {
+    "date": (new Date()).toISOString().split('T')[0]
+  });
   !match.player && Object.assign(match, { "player": [["", ""], ["", ""]] });
   !match.sets && Object.assign(match, { "sets": [[0, 0], [0, 0], [0, 0]] });
   !match.password && Object.assign(match, { "password": "" });

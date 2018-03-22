@@ -42,7 +42,8 @@ class TournamentApi {
   }
 
   static updateMatch(tid, rid, mid, body) {
-    const url = config.API_URL + "tournaments/" + tid + "/rounds/" + rid + "/matches/" + mid;
+    const url = config.API_URL + "tournaments/" + tid + "/rounds/" + rid +
+      "/matches/" + mid;
     return new Promise((resolve, reject) => {
       setTimeout(() => fetch(url, {
         method: 'PUT',

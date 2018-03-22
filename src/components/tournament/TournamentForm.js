@@ -2,9 +2,13 @@ import React, { PropTypes } from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 import PasswordInput from '../common/PasswordInput';
+import CheckboxGroup from '../common/CheckboxGroup';
 
 const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, onCancel, saving, errors }) => {
   const startDate = createInfo.startDate || (new Date()).toISOString().split('T')[0];
+  const playersForDropdown = players.map(player => {
+    return { value: player, text: player };
+  });
   return (
     <form>
       <TextInput
@@ -24,7 +28,7 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         label="Erstellt von"
         value={createInfo.createdBy}
         defaultOption="Auswählen"
-        options={players}
+        options={playersForDropdown}
         onChange={onChange} error={errors.createdBy} />
       <TextInput
         name="startDate"
@@ -32,6 +36,13 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         value={startDate}
         onChange={onChange}
         error={errors.startDate} />
+      <CheckboxGroup
+        title="Teilnehmer"
+        name={players}
+        label={players}
+        checked={createInfo.participants}
+        onChange={onChange}
+      />
       <PasswordInput
         name="password"
         label="Admin-Passwort"

@@ -2,17 +2,18 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 const TournamentItem = ({ tournament, editMode, ranking }) => {
+  const t = tournament;
   const url = editMode ? '/edit/' : '/liga/';
   return (
-    ranking && tournament.ranking ? 
+    ranking && t.ranking ? 
     <div>
       <hr/>
-      <h5><Link to={url + tournament.id}>{tournament.name}</Link></h5>
-      <p>1. {tournament.ranking[0]} - 2. {tournament.ranking[1]} - 3. {tournament.ranking[2]}</p>
+      <h5><Link to={url + t.id}>{t.name}</Link></h5>
+      <p>1. {t.ranking[0]} - 2. {t.ranking[1]} - 3. {t.ranking[2]}</p>
     </div>
     :
     <div>
-      <h5><Link to={url + tournament.id}>{tournament.name}</Link></h5>
+      <h5><Link to={url + t.id}>{t.name}</Link></h5>
     </div>
   );
 };
