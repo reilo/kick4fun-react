@@ -38,6 +38,7 @@ class MatchPage extends React.Component {
     let match = this.state.match;
     if (field == "date") {
       match.date = val;
+      /*
       if (isNaN(Date.parse(val))) {
         Object.assign(errors, {
           [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
@@ -45,6 +46,7 @@ class MatchPage extends React.Component {
       } else {
         delete errors[field];
       }
+      */
     } else if (field.startsWith("set")) {
       const parts = field.split("_");
       const s1 = parseInt(parts[1]);

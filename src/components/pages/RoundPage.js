@@ -38,6 +38,7 @@ class RoundPage extends React.Component {
     let round = this.state.round;
     if (field == "startDate") {
       round.startDate = val;
+      /*
       if (isNaN(Date.parse(val))) {
         Object.assign(errors, {
           [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
@@ -45,8 +46,10 @@ class RoundPage extends React.Component {
       } else {
         delete errors[field];
       }
+      */
     } else if (field == "endDate") {
       round.endDate = val;
+      /*
       if (isNaN(Date.parse(val))) {
         Object.assign(errors, {
           [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
@@ -54,6 +57,7 @@ class RoundPage extends React.Component {
       } else {
         delete errors[field];
       }
+      */
     } else if (field == "password") {
       round.password = val;
     }

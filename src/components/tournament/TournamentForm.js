@@ -7,8 +7,10 @@ import CheckboxGroup from '../common/CheckboxGroup';
 const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, onCancel, saving, errors }) => {
   const startDate = createInfo.startDate || (new Date()).toISOString().split('T')[0];
   const playersForDropdown = players.map(player => {
-    return { value: player, text: player };
+    return { value: player.id, text: player.name };
   });
+  const playersForCheckBoxName = players.map(player => player.id);
+  const playersForCheckBoxLabel = players.map(player => player.name);
   return (
     <form>
       <TextInput
@@ -38,8 +40,8 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         error={errors.startDate} />
       <CheckboxGroup
         title="Teilnehmer"
-        name={players}
-        label={players}
+        name={playersForCheckBoxName}
+        label={playersForCheckBoxLabel}
         checked={createInfo.participants}
         onChange={onChange}
       />

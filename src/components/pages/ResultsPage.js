@@ -21,6 +21,7 @@ class ResultsPage extends React.Component {
   render() {
     const { tournament } = this.props;
     const t = tournament;
+    const tableTitle = t.status == "completed" ? "Endstand" : "Aktuelle Tabelle";
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
@@ -33,7 +34,7 @@ class ResultsPage extends React.Component {
               display={DisplayMode.default} />
           </div>
           <div className="cell small-12 medium-12 large-6">
-            <h5 className="primary label">Aktuelle Tabelle</h5>
+            <h5 className="primary label">{tableTitle}</h5>
             <Table rows={t && t.table} />
           </div>
         </div>

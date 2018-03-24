@@ -36,6 +36,7 @@ class CreateTournamentPage extends React.Component {
     let createInfo = this.state.createInfo;
     if (field == "startDate") {
       createInfo.startDate = val;
+      /*
       if (isNaN(Date.parse(val))) {
         Object.assign(errors, {
           [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
@@ -43,6 +44,7 @@ class CreateTournamentPage extends React.Component {
       } else {
         delete errors[field];
       }
+      */
     } else if (field.startsWith("checkbox_")) {
       const checked = event.target.checked;
       const name = field.split("_")[1];
@@ -136,12 +138,12 @@ function mapStateToProps(state, ownProps) {
       participants: [],
       template: tid
     });
-  const playersForCheckbox = state.players.map(player => player.name);
+    const players = state.players.filter(p => p.active && p.real);
   return {
     templates: state.templates,
     templateInfo: templateInfo,
     createInfo: createInfo,
-    players: playersForCheckbox
+    players: players
   };
 }
 

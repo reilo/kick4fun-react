@@ -1,21 +1,37 @@
-Turnier erstellen fertig machen
-- server check
-- teilnehmer mischen
-- bak ja/nein
-- official, fun, test
+Homepage:
+- Icon
+- Foto Kickerpokal in Menubar
 
-Edit-Modus Turnier - Name, official, status
+Teilnehmerverwaltung:
+- Spieler editieren und neu anlegen
 
-Edit password issue
+Turnierverwaltung:
+- interval
++ Eingabedaten am Server besser checken
++ Teilnehmer bei Turniererstellung mischen
+- Edit Turnier: Name, Status, Modus, ...
+- Ersatzspieler
 
-Spielplan Spalten ausrichten
+Adminbereich:
+- Widget-Config (Homepage)
 
-weitere Turnier-Details
-Statistik Übersicht mit Links zu Teilnehmern (aktuell/gesamt), Turnieren
+Schiribereich
 
-Admin-Bereich
-- Teilnehmerverwaltung, Test-Teilnehmer
-- Widget-Config
-- Super Admin
+Statistiken:
+- Torschützenkönig
+- beste Abwehr
+- Turnier/Spieler (auch Turnierübergreifend)
+- Punkte +/-, Tore +/-, Tore pro Spiel
+- Verlauf Tabellenstand
+- Gegner-/Partner-Statistik
+- höchste Siege
 
-Icon in Menubar
+Bugs:
+- Enter password issue (Browser-abhängig)
+
+UI-Verbesserungen:
+- Datepicker
+- Spielplan Spalten ausrichten
+
+Daten:
+- optional: Umstellen auf Mongo mit Model

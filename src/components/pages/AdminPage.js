@@ -30,7 +30,6 @@ class AdminPage extends React.Component {
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{"Spieleingabe & Ligaverwaltung"}</h5>
             <div className="callout primary">
-              <h5>Ergebnisse eintragen</h5>
               <p>Hier kannst du Spielergebnisse für die aktuellen Turniere eingeben.
                 Klicke unten eine Liga an, um in den Bearbeitungsmodus zu gelangen.
                 Du kannst hier auch die Termine anpassen.</p>

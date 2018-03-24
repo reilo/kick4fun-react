@@ -6,8 +6,8 @@ const PlayerTable = ({ players }) => {
     <table className="table">
       <thead>
         <tr>
+          <th>Kurzname</th>
           <th>Name</th>
-          <th>Voller Name</th>
           <th>Status</th>
           <th>Aktion</th>
         </tr>
