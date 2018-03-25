@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/store';
-import Schedule, { ScheduleMode, ChangeMode, DisplayMode } from '../tournament/Schedule';
+import Schedule, { ScheduleMode } from '../tournament/Schedule';
 
 class EditResultsPage extends React.Component {
   constructor(props, context) {
@@ -33,10 +33,9 @@ class EditResultsPage extends React.Component {
             <Schedule
               tournament={tournament}
               mode={ScheduleMode.all}
-              change={tournament.status == "progress" ? ChangeMode.modify : ChangeMode.readOnly}
-              display={DisplayMode.allDetails} />
+              editMode={tournament.status == "progress"}
+              showDetails />
           </div>
-          <div className="cell small-0 medium-0 large-2" />
           <div className="cell small-0 medium-0 large-2" />
         </div>
       </div>

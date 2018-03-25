@@ -30,7 +30,6 @@ class PlaygroundPage extends React.Component {
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-12 medium-12 large-6 ">
             <div className="callout primary">
-              <h5>Kickerliga - Bolzplatz</h5>
               <p>Hier kannst du deine eigenen Turniere erstellen und bearbeiten, um die App zu testen oder eine eigene Liga auszuspielen.</p>
               <p>Der Administrator kann dein Turnier später als offiziell markieren, sodass es auch im öffentlichen Bereich angezeigt wird.</p>
             </div>

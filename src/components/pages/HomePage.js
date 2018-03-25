@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as config from '../../appConfig';
 import Table from '../tournament/Table';
-import Schedule, { ScheduleMode, DisplayMode } from '../tournament/Schedule';
+import Schedule, { ScheduleMode } from '../tournament/Schedule';
 import Rules from '../tournament/Rules';
 import TournamentList from '../tournament/TournamentList';
 import { store } from '../../../src/store';
@@ -47,8 +47,7 @@ class HomePage extends React.Component {
             <Schedule
               tournament={tournament}
               mode={ScheduleMode.current}
-              count={3}
-              display={DisplayMode.default} />
+              count={3} />
           </div>
           <div className="cell small-12 medium-12 large-6 ">
             <h5 className="primary label">Aktuelle Tabelle</h5>

@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import Match from './Match';
-import { ChangeMode, DisplayMode } from "./Schedule";
 
-const Round = ({ tournament, roundId, change, display }) => {
+const Round = ({ tournament, roundId, editMode, showDetails }) => {
   const round = tournament.rounds[roundId];
   const startDate = new Date(round.startDate);
   const endDate = new Date(round.endDate);
@@ -16,8 +15,7 @@ const Round = ({ tournament, roundId, change, display }) => {
     <div>
       <span style={nobreak}>
         <h5 className={labelType}>Runde {roundId + 1} {dateStr}&nbsp;
-        {change == ChangeMode.modify &&
-            <a className="small button noborder" href={editUrl}>Edit</a>}
+        {editMode && <a className="small button noborder" href={editUrl}>Edit</a>}
         </h5>
       </span>
       <table className="table">
@@ -25,11 +23,10 @@ const Round = ({ tournament, roundId, change, display }) => {
           {round.matches.map((match, index) =>
             <Match
               key={index}
-              tournament={tournament}
-              roundId={roundId}
-              matchId={index}
-              change={change}
-              display={display} />)}
+              match={match}
+              editUrl={"/match/" + tournament.id + "/" + roundId + "/" + index}
+              editMode={editMode}
+              showDetails={showDetails} />)}
         </tbody>
       </table>
     </div>
@@ -39,8 +36,8 @@ const Round = ({ tournament, roundId, change, display }) => {
 Round.propTypes = {
   tournament: PropTypes.object.isRequired,
   roundId: PropTypes.number.isRequired,
-  change: PropTypes.string,
-  display: PropTypes.string
+  editMode: PropTypes.bool,
+  showDetails: PropTypes.bool
 };
 
 export default Round;

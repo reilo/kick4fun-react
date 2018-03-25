@@ -11,7 +11,7 @@ const PlayerRow = ({ player }) => {
       <td>
         <button
           type="button"
-          disabled={false}
+          disabled
           className="small button tinyborder">
           {'Edit'}
         </button>

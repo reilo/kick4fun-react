@@ -1,14 +1,9 @@
-Homepage:
-- Icon
-- Foto Kickerpokal in Menubar
-
 Teilnehmerverwaltung:
 - Spieler editieren und neu anlegen
 
 Turnierverwaltung:
-- interval
-+ Eingabedaten am Server besser checken
-+ Teilnehmer bei Turniererstellung mischen
++ leeres Password = kein Passwort anbieten
++ interval
 - Edit Turnier: Name, Status, Modus, ...
 - Ersatzspieler
 
@@ -18,18 +13,18 @@ Adminbereich:
 Schiribereich
 
 Statistiken:
-- Torschützenkönig
-- beste Abwehr
 - Turnier/Spieler (auch Turnierübergreifend)
 - Punkte +/-, Tore +/-, Tore pro Spiel
 - Verlauf Tabellenstand
 - Gegner-/Partner-Statistik
-- höchste Siege
 
 Bugs:
-- Enter password issue (Browser-abhängig)
++ Enter password issue (Browser-abhängig)
 
 UI-Verbesserungen:
++ Gridlayout verbessern
++ Spieler highlighten
+- Parameter Details in Controls unten
 - Datepicker
 - Spielplan Spalten ausrichten
 

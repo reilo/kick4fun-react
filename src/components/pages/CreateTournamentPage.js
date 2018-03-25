@@ -36,15 +36,6 @@ class CreateTournamentPage extends React.Component {
     let createInfo = this.state.createInfo;
     if (field == "startDate") {
       createInfo.startDate = val;
-      /*
-      if (isNaN(Date.parse(val))) {
-        Object.assign(errors, {
-          [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
-        });
-      } else {
-        delete errors[field];
-      }
-      */
     } else if (field.startsWith("checkbox_")) {
       const checked = event.target.checked;
       const name = field.split("_")[1];
@@ -90,7 +81,8 @@ class CreateTournamentPage extends React.Component {
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
-          <div className="cell small-12 medium-12 large-12 ">
+          <div className="cell small-0 medium-0 large-2" />
+          <div className="cell small-12 medium-12 large-8 ">
             <h5 className="primary label">Neues Turnier: {templateInfo.name}</h5>
             <h5 className="primary label">Schritt 2: Details festlegen</h5>
             <TournamentForm
@@ -104,6 +96,7 @@ class CreateTournamentPage extends React.Component {
               saving={this.state.saving}
             />
           </div>
+          <div className="cell small-0 medium-0 large-2" />
         </div>
       </div>
     );
@@ -138,7 +131,7 @@ function mapStateToProps(state, ownProps) {
       participants: [],
       template: tid
     });
-    const players = state.players.filter(p => p.active && p.real);
+  const players = state.players.filter(p => p.active && p.real);
   return {
     templates: state.templates,
     templateInfo: templateInfo,

@@ -5,15 +5,7 @@ export const ScheduleMode = Object.freeze({
   "all": "all", "current": "current", "first": "first", "last": "last"
 });
 
-export const ChangeMode = Object.freeze({
-  "readOnly": "readOnly", "modify": "modify"
-});
-
-export const DisplayMode = Object.freeze({
-  "default": "default", "showDetails": "showDetails"
-});
-
-const Schedule = ({ tournament, mode, count, change, display }) => {
+const Schedule = ({ tournament, mode, count, editMode, showDetails }) => {
   const today = (new Date()).toISOString().split('T')[0];
   return (
     <div>
@@ -39,8 +31,8 @@ const Schedule = ({ tournament, mode, count, change, display }) => {
           key={index}
           tournament={tournament}
           roundId={index}
-          change={change}
-          display={display} />
+          editMode={editMode}
+          showDetails={showDetails} />
       )}
     </div>
   );
@@ -50,8 +42,8 @@ Schedule.propTypes = {
   tournament: PropTypes.object.isRequired,
   mode: PropTypes.string.isRequired,
   count: PropTypes.number,
-  change: PropTypes.string,
-  display: PropTypes.string
+  editMode: PropTypes.bool,
+  showDetails: PropTypes.bool
 };
 
 export default Schedule;

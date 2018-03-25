@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/store';
-import Schedule, { ScheduleMode, ChangeMode, DisplayMode } from '../tournament/Schedule';
+import Schedule, { ScheduleMode } from '../tournament/Schedule';
 import Table from '../tournament/Table';
+import MatchList from '../tournament/MatchList';
 
 class ResultsPage extends React.Component {
   constructor(props, context) {
@@ -27,15 +28,26 @@ class ResultsPage extends React.Component {
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{t ? t.name : "Laden..."}</h5>
-            <Schedule
-              tournament={t}
-              mode={ScheduleMode.all}
-              change={ChangeMode.readOnly}
-              display={DisplayMode.default} />
-          </div>
-          <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{tableTitle}</h5>
             <Table rows={t && t.table} />
+          </div>
+          <div className="cell small-12 medium-6 large-3">
+            <h5 className="primary label">Beste Torschützen</h5>
+            <Table rows={t && t.topScorer} count={5} columns={["goalsScored"]} />
+          </div>
+          <div className="cell small-12 medium-6 large-3">
+            <h5 className="primary label">Beste Verteidiger</h5>
+            <Table rows={t && t.topDefender} count={5} columns={["goalsShipped"]} />
+          </div>
+          <div className="cell small-12 medium-12 large-6">
+            <h5 className="primary label">Höchste Siege</h5>
+            <MatchList matches={t && t.plainMatches} count={5} />
+          </div>
+          <div className="cell small-12 medium-12 large-6">
+            <h5 className="primary label">Spielplan</h5>
+            <Schedule
+              tournament={t}
+              mode={ScheduleMode.all} />
           </div>
         </div>
       </div>
@@ -49,7 +61,6 @@ ResultsPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  const loadActive = !ownProps.params.tid;
   return {
     tournament: state.tournament
   };

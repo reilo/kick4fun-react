@@ -34,7 +34,9 @@ class TournamentApi {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       }).then(
-        response => resolve(response.json())
+        response => response.status == 200 ?
+          resolve(response.json()) :
+          reject(response.statusText)
       ).catch(
         error => reject(error)
       ), delay);
@@ -52,7 +54,7 @@ class TournamentApi {
       }).then(
         response => response.status == 200 ?
           resolve(response.json()) :
-          reject(response.status + ": " + response.statusText)
+          reject(response.statusText)
       ).catch(
         error => reject(error)
       ), delay);
@@ -69,7 +71,7 @@ class TournamentApi {
       }).then(
         response => response.status == 200 ?
           resolve(response.json()) :
-          reject(response.status + ": " + response.statusText)
+          reject(response.statusText)
       ).catch(
         error => reject(error)
       ), delay);
