@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
-import { store } from '../../../src/store';
+import { store } from '../../../src/configureStore';
 import RoundForm from '../tournament/RoundForm';
 import toastr from 'toastr';
 

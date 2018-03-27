@@ -1,7 +1,8 @@
+/*eslint-disable import/default */
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import { configureStore } from './store';
+import { configureStore } from './configureStore';
 import * as config from './appConfig';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';

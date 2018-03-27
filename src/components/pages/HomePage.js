@@ -5,7 +5,7 @@ import Table from '../tournament/Table';
 import Schedule, { ScheduleMode } from '../tournament/Schedule';
 import Rules from '../tournament/Rules';
 import TournamentList from '../tournament/TournamentList';
-import { store } from '../../../src/store';
+import { store } from '../../../src/configureStore';
 import { loadTournament } from '../../actions/tournamentActions';
 
 // use class instead of function because of hot reloading restrictions
