@@ -38,21 +38,12 @@ class MatchPage extends React.Component {
     let match = this.state.match;
     if (field == "date") {
       match.date = val;
-      /*
-      if (isNaN(Date.parse(val))) {
-        Object.assign(errors, {
-          [field]: "Datum ist ungültig - bitte im Format JJJJ-MM-DD eingeben."
-        });
-      } else {
-        delete errors[field];
-      }
-      */
     } else if (field.startsWith("set")) {
       const parts = field.split("_");
       const s1 = parseInt(parts[1]);
       const s2 = parseInt(parts[2]);
       match.sets[s1][s2] = parseInt(val);
-    } else if (field == "password") {
+    } else  {
       match.password = val;
     }
     return this.setState({ match: match, errors: errors });

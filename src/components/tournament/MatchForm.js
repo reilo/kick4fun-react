@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import SelectInput from '../common/SelectInput';
 import TextInput from '../common/TextInput';
+import DateInput from '../common/DateInput';
 import PasswordInput from '../common/PasswordInput';
 
 const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, saving, errors }) => {
@@ -13,7 +14,7 @@ const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, saving
     <div>
       <form>
         <h5 className="primary label">Spieleingabe: Runde {roundId + 1} - Spiel {matchId + 1}</h5>
-        <TextInput
+        <DateInput
           name="date"
           label="Spieldatum"
           value={match.date}

@@ -42,6 +42,10 @@ class ResultsPage extends React.Component {
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">Höchste Siege</h5>
             <MatchList matches={t && t.plainMatches} count={5} />
+            <h5 className="primary label">Alle zu 0 Spiele</h5>
+            <MatchList matches={t && t.to0Matches} />
+            <h5 className="primary label">Alle zu 9 Spiele</h5>
+            <MatchList matches={t && t.to9Matches} />
           </div>
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">Spielplan</h5>

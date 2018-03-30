@@ -2,15 +2,13 @@ Teilnehmerverwaltung:
 - Spieler editieren und neu anlegen
 
 Turnierverwaltung:
-+ leeres Password = kein Passwort anbieten
-+ interval
 - Edit Turnier: Name, Status, Modus, ...
-- Ersatzspieler
+- Ersatzspieler anzeigen/eingeben
 
 Adminbereich:
 - Widget-Config (Homepage)
 
-Schiribereich
+Geplante Features auf Infoseite
 
 Statistiken:
 - Turnier/Spieler (auch Turnierübergreifend)
@@ -18,14 +16,13 @@ Statistiken:
 - Verlauf Tabellenstand
 - Gegner-/Partner-Statistik
 
-Bugs:
-+ Enter password issue (Browser-abhängig)
+Passwort:
++ verschlüsselt speichern
 
 UI-Verbesserungen:
 + Gridlayout verbessern
-+ Spieler highlighten
+- Spieler highlighten
 - Parameter Details in Controls unten
-- Datepicker
 - Spielplan Spalten ausrichten
 
 Daten:

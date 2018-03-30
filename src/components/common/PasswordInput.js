@@ -6,7 +6,7 @@ const PasswordInput = ({ name, label, onChange, value, error }) => {
     <div className="small-12 columns">
       <label>{label}
         <input
-          type="text"
+          type="password"
           name={name}
           aria-describedby={errorText}
           value={value}

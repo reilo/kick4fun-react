@@ -1,18 +1,19 @@
 import React, { PropTypes } from 'react';
 import TextInput from '../common/TextInput';
+import DateInput from '../common/DateInput';
 import PasswordInput from '../common/PasswordInput';
 
 const RoundForm = ({ round, onChange, onSave, onCancel, roundId, saving, errors }) => {
   return (
     <form>
       <h5 className="primary label">Bearbeiten: Runde {roundId + 1} - Details</h5>
-      <TextInput
+      <DateInput
         name="startDate"
         label="Start-Datum"
         value={round.startDate}
         onChange={onChange}
         error={errors.startDate} />
-      <TextInput
+      <DateInput
         name="endDate"
         label="End-Datum"
         value={round.endDate}

@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import TextInput from '../common/TextInput';
+import DateInput from '../common/DateInput';
+import NumberInput from '../common/NumberInput';
 import SelectInput from '../common/SelectInput';
 import PasswordInput from '../common/PasswordInput';
 import CheckboxGroup from '../common/CheckboxGroup';
@@ -32,12 +34,18 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         defaultOption="Auswählen"
         options={playersForDropdown}
         onChange={onChange} error={errors.createdBy} />
-      <TextInput
+      <DateInput
         name="startDate"
         label="Start-Datum"
         value={startDate}
         onChange={onChange}
         error={errors.startDate} />
+      <NumberInput
+        name="interval"
+        label="Tage pro Runde"
+        value={createInfo.interval}
+        onChange={onChange}
+        error={errors.interval} />
       <CheckboxGroup
         title="Teilnehmer"
         name={playersForCheckBoxName}

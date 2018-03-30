@@ -7,7 +7,8 @@ const Round = ({ tournament, roundId, editMode, showDetails }) => {
   const endDate = new Date(round.endDate);
   const sstr = isNaN(startDate.getTime()) ? "" : startDate.toLocaleDateString();
   const estr = isNaN(startDate.getTime()) ? "" : endDate.toLocaleDateString();
-  const dateStr = sstr || estr ? "(" + sstr + " bis " + estr + ")" : "";
+  const dateStr = sstr || estr ?
+    sstr == estr ? "(" + sstr + ")" : "(" + sstr + " bis " + estr + ")" : "";
   const labelType = "primary label";
   const nobreak = { "whiteSpace": "nowrap" };
   const editUrl = "/round/" + tournament.id + "/" + roundId;

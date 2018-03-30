@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import PlayerTable from '../tournament/PlayerTable';
 import TournamentList from '../tournament/TournamentList';
+import { browserHistory } from 'react-router';
 
 // use class instead of function because of hot reloading restrictions
 class AdminPage extends React.Component {
@@ -16,6 +17,10 @@ class AdminPage extends React.Component {
     if (this.props.players.length != nextProps.players.length) {
       this.setState({ players: nextProps.players.slice() });
     }
+  }
+
+  redirectToAddPlayerPage() {
+    browserHistory.push('/player');
   }
 
   render() {
@@ -38,6 +43,11 @@ class AdminPage extends React.Component {
           </div>
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{"Spielerverwaltung"}</h5>
+            <button type="submit"
+              className="button"
+              onClick={this.redirectToAddPlayerPage}>
+              Neuer Spieler
+            </button>
             <PlayerTable players={players} />
           </div>
         </div>
