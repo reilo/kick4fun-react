@@ -42,13 +42,18 @@ export function updatePlayerSuccess(player) {
   return { type: types.UPDATE_PLAYER_SUCCESS, player };
 }
 
-export function savePlayer(player) {
-  return function (dispatch, getState) {/*
-    return courseApi.saveCourse(course).then(savedCourse => {
-      course.id ? dispatch(updateCourseSuccess(savedCourse)) :
-        dispatch(createCourseSuccess(savedCourse));
-    }).catch(error => {
-      throw (error);
-    });*/
+export function savePlayer(player, isNew) {
+  return function (dispatch, getState) {
+    return isNew ?
+      KickerligaApi.createPlayer(player).then(newPlayer => {
+        dispatch(createPlayerSuccess(newPlayer));
+      }).catch(error => {
+        throw (error);
+      }) :
+      KickerligaApi.updatePlayer(player).then(updatedPlayer => {
+        dispatch(updatePlayerSuccess(updatedPlayer));
+      }).catch(error => {
+        throw (error);
+      });
   };
 }

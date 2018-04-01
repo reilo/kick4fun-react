@@ -1,17 +1,18 @@
 import React, { PropTypes } from 'react';
 
-const PasswordInput = ({ name, label, onChange, value, error }) => {
-  const errorText = "errorText_" + name;
+const PasswordInput = ({ name, label, placeholder, helpText, value,
+  onChange, error }) => {
   return (
     <div className="small-12 columns">
       <label>{label}
         <input
           type="password"
           name={name}
-          aria-describedby={errorText}
+          placeholder={placeholder}
+          aria-describedby={helpText}
           value={value}
           onChange={onChange} />
-        {error && <p className="help-text" id={errorText}>{error}</p>}
+        {helpText && <p className="help-text" id="helpText">{helpText}</p>}
       </label>
     </div>
   );
@@ -20,8 +21,10 @@ const PasswordInput = ({ name, label, onChange, value, error }) => {
 PasswordInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  helpText: PropTypes.string,
   value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
   error: PropTypes.string
 };
 

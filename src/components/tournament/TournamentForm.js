@@ -12,26 +12,29 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
     return { value: player.id, text: player.name };
   });
   const playersForCheckBoxName = players.map(player => player.id);
-  const playersForCheckBoxLabel = players.map(player => player.name);
+  const playersForCheckBoxLabel = players.map(player =>
+    player.name + " (" + player.fullName + ")");
   return (
     <form>
       <TextInput
         name="id"
         label="Turnier-Id"
         value={createInfo.id}
+        placeholder="Wird als Dateiname zum Speichern verwendet"
         onChange={onChange}
         error={errors.id} />
       <TextInput
         name="name"
         label="Turnier-Name"
         value={createInfo.name}
+        placeholder="Name für Spielplan und Ergebnislisten"
         onChange={onChange}
         error={errors.name} />
       <SelectInput
         name="createdBy"
         label="Erstellt von"
         value={createInfo.createdBy}
-        defaultOption="Auswählen"
+        defaultOption="Ersteller auswählen"
         options={playersForDropdown}
         onChange={onChange} error={errors.createdBy} />
       <DateInput
@@ -42,12 +45,12 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         error={errors.startDate} />
       <NumberInput
         name="interval"
-        label="Tage pro Runde"
+        label="Dauer pro Runde in Tagen"
         value={createInfo.interval}
         onChange={onChange}
         error={errors.interval} />
       <CheckboxGroup
-        title="Teilnehmer"
+        title="Turnier-Teilnehmer"
         name={playersForCheckBoxName}
         label={playersForCheckBoxLabel}
         checked={createInfo.participants}

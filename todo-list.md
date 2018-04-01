@@ -1,14 +1,9 @@
-Teilnehmerverwaltung:
-- Spieler editieren und neu anlegen
-
 Turnierverwaltung:
 - Edit Turnier: Name, Status, Modus, ...
 - Ersatzspieler anzeigen/eingeben
 
 Adminbereich:
 - Widget-Config (Homepage)
-
-Geplante Features auf Infoseite
 
 Statistiken:
 - Turnier/Spieler (auch Turnierübergreifend)
@@ -19,11 +14,13 @@ Statistiken:
 Passwort:
 + verschlüsselt speichern
 
+Bugs:
++ beim Speichern Werte im UI nicht zurücksetzen
++ nach Speichern Werte aktualisieren
+
 UI-Verbesserungen:
++ Checkbox Helptext
 + Gridlayout verbessern
 - Spieler highlighten
 - Parameter Details in Controls unten
 - Spielplan Spalten ausrichten
-
-Daten:
-- optional: Umstellen auf Mongo mit Model

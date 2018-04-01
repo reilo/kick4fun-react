@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as playerActions from '../../actions/kickerligaActions';
 import PlayerForm from '../tournament/PlayerForm';
+import toastr from 'toastr';
 
 class PlayerPage extends React.Component {
   constructor(props, context) {
@@ -11,7 +12,8 @@ class PlayerPage extends React.Component {
     this.state = {
       player: Object.assign({}, this.props.player),
       isNew: this.props.isNew,
-      errors: {}
+      errors: {},
+      saving: false
     };
 
     this.updatePlayerState = this.updatePlayerState.bind(this);
@@ -38,7 +40,18 @@ class PlayerPage extends React.Component {
 
   savePlayer(event) {
     event.preventDefault();
-    this.props.actions.savePlayer(this.state.player);
+    this.setState({ saving: true });
+    this.props.actions.savePlayer(this.state.player, this.state.isNew)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({ saving: false });
+      });
+  }
+
+  redirect() {
+    this.setState({ saving: false });
+    toastr.success('Spieler gespeichert');
     this.context.router.push('/admin');
   }
 
@@ -49,10 +62,10 @@ class PlayerPage extends React.Component {
 
   render() {
     return (
-      <div className="grid-container">
+      <div className="grid-container" >
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-0 medium-1 large-2" />
-          <div className="small-12 medium-10 large-8 columns">
+          <div className="cell small-12 medium-10 large-8 columns">
             <PlayerForm
               onChange={this.updatePlayerState}
               onSave={this.savePlayer}
@@ -60,6 +73,7 @@ class PlayerPage extends React.Component {
               player={this.state.player}
               isNew={this.state.isNew}
               errors={this.state.errors}
+              saving={this.state.saving}
             />
           </div>
           <div className="cell small-0 medium-1 large-2" />

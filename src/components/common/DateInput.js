@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const DateInput = ({ name, label, onChange, placeholder, value, error }) => {
-  const errorText = "errorText_" + name;
+const DateInput = ({ name, label, placeholder, helpText, value, onChange, error }) => {
   return (
     <div className="small-12 columns">
       <label>{label}
@@ -9,10 +8,10 @@ const DateInput = ({ name, label, onChange, placeholder, value, error }) => {
           type="date"
           name={name}
           placeholder={placeholder}
-          aria-describedby={errorText}
+          aria-describedby={helpText}
           value={value}
           onChange={onChange} />
-        {error && <p className="help-text" id={errorText}>{error}</p>}
+        {helpText && <p className="help-text" id="helpText">{helpText}</p>}
       </label>
     </div>
   );
@@ -21,9 +20,10 @@ const DateInput = ({ name, label, onChange, placeholder, value, error }) => {
 DateInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  helpText: PropTypes.string,
   value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
   error: PropTypes.string
 };
 

@@ -43,7 +43,7 @@ class MatchPage extends React.Component {
       const s1 = parseInt(parts[1]);
       const s2 = parseInt(parts[2]);
       match.sets[s1][s2] = parseInt(val);
-    } else  {
+    } else {
       match.password = val;
     }
     return this.setState({ match: match, errors: errors });
@@ -80,7 +80,8 @@ class MatchPage extends React.Component {
     return (
       <div className="grid-container" >
         <div className="grid-x grid-margin-x grid-margin-y">
-          <div className="cell small-12 medium-12 large-8">
+          <div className="cell small-0 medium-1 large-2" />
+          <div className="cell small-12 medium-10 large-8">
             <h5 className="primary label">
               {tournament ? tournament.name : "Laden..."}
             </h5>
@@ -94,6 +95,7 @@ class MatchPage extends React.Component {
               errors={this.state.errors}
               saving={this.state.saving} />
           </div>
+          <div className="cell small-0 medium-1 large-2" />
         </div>
       </div>
     );
