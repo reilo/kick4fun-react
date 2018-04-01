@@ -131,7 +131,7 @@ function mapStateToProps(state, ownProps) {
       participants: [],
       template: tid
     });
-  const players = state.players.filter(p => p.active && p.real);
+  const players = state.players.filter(p => p.active);
   return {
     templates: state.templates,
     templateInfo: templateInfo,

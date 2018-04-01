@@ -20,14 +20,16 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         name="id"
         label="Turnier-Id"
         value={createInfo.id}
-        placeholder="Wird als Dateiname zum Speichern verwendet"
+        placeholder="Eindeutige Turnier-Id"
+        helpText="Die Id wird als Dateiname (plus Dateierweiterung) zum Speichern verwendet."
         onChange={onChange}
         error={errors.id} />
       <TextInput
         name="name"
         label="Turnier-Name"
         value={createInfo.name}
-        placeholder="Name für Spielplan und Ergebnislisten"
+        placeholder="Eindeutiger Turnier-Name"
+        helpText="Der Name wird für Spielplan und Ergebnislisten verwendet."
         onChange={onChange}
         error={errors.name} />
       <SelectInput
@@ -41,12 +43,14 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         name="startDate"
         label="Start-Datum"
         value={startDate}
+        helpText="Die erste Spielrunde startet an diesem Tag."
         onChange={onChange}
         error={errors.startDate} />
       <NumberInput
         name="interval"
-        label="Dauer pro Runde in Tagen"
+        label="Dauer einer Spielrunde in Tagen"
         value={createInfo.interval}
+        helpText="Die Termine des initialen Spielplans werden entsprechend erstellt."
         onChange={onChange}
         error={errors.interval} />
       <CheckboxGroup
@@ -58,9 +62,11 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
       />
       <PasswordInput
         name="password"
-        label="Admin-Passwort"
+        label="Passwort"
         value={createInfo.password}
-        onChange={onChange}
+        placeholder="Turnier-Admin-Passwort"
+        helpText="Wähle ein Passwort für die Turnier-Administration. Es kann auch leer sein."
+      onChange={onChange}
         error={errors.password} />
       <button
         type="button"

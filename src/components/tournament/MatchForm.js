@@ -102,6 +102,8 @@ const MatchForm = ({ match, onChange, onSave, onCancel, roundId, matchId, saving
           name="password"
           label="Passwort"
           value={match.password}
+          placeholder="Turnier-Admin-Passwort"
+          helpText="Passwort des Turnier-Administrators"
           onChange={onChange}
           error={errors.password} />
         <button

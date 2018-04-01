@@ -1,9 +1,14 @@
 Turnierverwaltung:
-- Edit Turnier: Name, Status, Modus, ...
+- Edit Turnier: Name, Status, ...
 - Ersatzspieler anzeigen/eingeben
+- Podium auf Ergebnisseite
 
 Adminbereich:
 - Widget-Config (Homepage)
+- Mark official
+- Aktives Turnier
+- Passwort ändern
+- Turniere löschen
 
 Statistiken:
 - Turnier/Spieler (auch Turnierübergreifend)
@@ -12,15 +17,15 @@ Statistiken:
 - Gegner-/Partner-Statistik
 
 Passwort:
-+ verschlüsselt speichern
++ verschlüsselt speichern/übertragen
 
 Bugs:
-+ beim Speichern Werte im UI nicht zurücksetzen
-+ nach Speichern Werte aktualisieren
+- nach Speichern Werte aktualisieren
+- Allgemein Ladeverhalten, alle Seiten
++ Backup-Pfad anlegen, falls nicht vorhanden
+- setState Warnung im Browser
 
 UI-Verbesserungen:
-+ Checkbox Helptext
-+ Gridlayout verbessern
-- Spieler highlighten
-- Parameter Details in Controls unten
+- Gridlayout verbessern
+- Spieler markieren/highlighten
 - Spielplan Spalten ausrichten

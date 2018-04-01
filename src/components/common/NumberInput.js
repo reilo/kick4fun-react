@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const NumberInput = ({ name, label, onChange, placeholder, value, error }) => {
-  const errorText = "errorText_" + name;
+const NumberInput = ({ name, label, onChange, placeholder, helpText, value, error }) => {
   return (
     <div className="small-12 columns">
       <label>{label}
@@ -9,10 +8,10 @@ const NumberInput = ({ name, label, onChange, placeholder, value, error }) => {
           type="number"
           name={name}
           placeholder={placeholder}
-          aria-describedby={errorText}
+          aria-describedby={helpText}
           value={value}
           onChange={onChange} />
-        {error && <p className="help-text" id={errorText}>{error}</p>}
+        {helpText && <p className="help-text" id="helpText">{helpText}</p>}
       </label>
     </div>
   );
@@ -23,6 +22,7 @@ NumberInput.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  helpText: PropTypes.string,
   value: PropTypes.number,
   error: PropTypes.string
 };

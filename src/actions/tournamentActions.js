@@ -50,7 +50,7 @@ export function createTournament(createInfo) {
   };
 }
 
-export function updateMatchSuccess() {
+export function updateMatchSuccess(match) {
   return { type: types.UPDATE_MATCH_SUCCESS };
 }
 
@@ -58,7 +58,7 @@ export function updateMatch(tid, rid, mid, match) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
     return TournamentApi.updateMatch(tid, rid, mid, match).then(() => {
-      dispatch(updateMatchSuccess());
+      dispatch(updateMatchSuccess(match));
     }).catch(error => {
       dispatch(ajaxCallError(error));
       throw (error);
@@ -66,7 +66,7 @@ export function updateMatch(tid, rid, mid, match) {
   };
 }
 
-export function updateRoundSuccess() {
+export function updateRoundSuccess(round) {
   return { type: types.UPDATE_ROUND_SUCCESS };
 }
 
@@ -74,7 +74,7 @@ export function updateRound(tid, rid, round) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
     return TournamentApi.updateRound(tid, rid, round).then(() => {
-      dispatch(updateRoundSuccess());
+      dispatch(updateRoundSuccess(round));
     }).catch(error => {
       dispatch(ajaxCallError(error));
       throw (error);

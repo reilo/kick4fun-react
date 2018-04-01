@@ -68,3 +68,7 @@ td.number, th.number {
 .button {
   margin-right: 0.5rem !important;
 }
+
+hr {
+  margin: 0.5rem !important;
+}

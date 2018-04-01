@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import PlayerTable from '../tournament/PlayerTable';
-import TournamentList from '../tournament/TournamentList';
+import TournamentTable from '../tournament/TournamentTable';
 import { browserHistory } from 'react-router';
 
 // use class instead of function because of hot reloading restrictions
@@ -19,6 +19,10 @@ class AdminPage extends React.Component {
     }
   }
 
+  redirectToAddTournamentPage() {
+    browserHistory.push('/templates');
+  }
+
   redirectToAddPlayerPage() {
     browserHistory.push('/player');
   }
@@ -26,23 +30,45 @@ class AdminPage extends React.Component {
   render() {
     const { tournaments, players } = this.props;
     const progressTournaments = tournaments.reduce((res, cur) => {
-      cur.status == "progress" && cur.official == true && res.push(cur);
+      cur.status == "progress" && res.push(cur);
       return res;
     }, []);
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-12 medium-12 large-6">
-            <h5 className="primary label">{"Spieleingabe & Ligaverwaltung"}</h5>
+            <h5 className="primary label">{"Spieleingabe & Terminplanung"}</h5>
             <div className="callout primary">
-              <p>Hier kannst du Spielergebnisse für die aktuellen Turniere eingeben.
-                Klicke unten eine Liga an, um in den Bearbeitungsmodus zu gelangen.
-                Du kannst hier auch die Termine anpassen.</p>
+              <p>Hier kannst du Spielergebnisse für die aktuellen Turniere
+                eingeben und die Termine und Turnierdaten anpassen.<br />
+                Du kannst auch deine eigenen Turniere erstellen.
+                Der Administrator kann dein Turnier später als offiziell markieren, sodass es auch im öffentlichen Bereich angezeigt wird.</p>
             </div>
-            <TournamentList tournaments={progressTournaments} editMode />
+            <button type="submit"
+              className="button"
+              onClick={this.redirectToAddTournamentPage}>
+              Neues Turnier
+            </button>
+            <TournamentTable tournaments={progressTournaments} editMode />
+            <h5 className="primary label">Turnierverwaltung</h5>
+            <div className="callout primary">
+              <p>Hier kannst du Turniere als offiziell markieren und das aktive
+                Turnier festlegen.
+              Du brauchst dazu das Kickerliga-Administrator-Passwort.</p>
+            </div>
+            <button type="submit"
+              className="button"
+              disabled>
+              Verwaltung
+            </button>
           </div>
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{"Spielerverwaltung"}</h5>
+            <div className="callout primary">
+              <p>Hier kannst du neue Spieler anlegen oder vorhandene bearbeiten.
+                Du brauchst dazu das Kickerliga-Administrator-Passwort.
+              </p>
+            </div>
             <button type="submit"
               className="button"
               onClick={this.redirectToAddPlayerPage}>

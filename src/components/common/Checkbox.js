@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 
-const Checkbox = ({ name, label, onChange, checked }) => {
+const Checkbox = ({ name, label, helpText, checked, onChange }) => {
   return (
     <div className="small-12 columns">
+    <label>{helpText}</label>
       <input
         name={name}
         type="checkbox"
@@ -16,6 +17,7 @@ const Checkbox = ({ name, label, onChange, checked }) => {
 Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  helpText: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool.isRequired
 };

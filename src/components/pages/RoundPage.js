@@ -27,7 +27,7 @@ class RoundPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.round.startDate != nextProps.round.startDate ||
       this.props.round.endDate != nextProps.round.endDate) {
-      this.setState({ round: nextProps.round });
+      this.setState({ round: JSON.parse(JSON.stringify(nextProps.round)) });
     }
   }
 
@@ -43,7 +43,7 @@ class RoundPage extends React.Component {
     } else if (field == "password") {
       round.password = val;
     }
-    return this.setState({ round: round });
+    return this.setState({ round: round, errors: errors });
   }
 
   updateRound(event) {
@@ -101,8 +101,8 @@ class RoundPage extends React.Component {
 RoundPage.propTypes = {
   params: PropTypes.object.isRequired,
   tournament: PropTypes.object.isRequired,
-  round: PropTypes.object,
-  roundId: PropTypes.number,
+  round: PropTypes.object.isRequired,
+  roundId: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -112,8 +112,7 @@ RoundPage.contextTypes = {
 
 function mapStateToProps(state, ownProps) {
   const rid = parseInt(ownProps.params.rid);
-  const round = state.tournament.rounds ?
-    JSON.parse(JSON.stringify(state.tournament.rounds[rid])) : {};
+  const round = state.tournament.rounds ? state.tournament.rounds[rid] : {};
   !round.startDate && Object.assign(round, {
     "startDate": (new Date()).toISOString().split('T')[0]
   });

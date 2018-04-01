@@ -14,7 +14,7 @@ const PlayerForm = ({ player, isNew, onSave, onChange, onCancel, saving, errors 
           label="Id"
           value={player.id}
           placeholder="Wird automatisch generiert"
-          helpText="Wird generiert und kann nicht verändert werden"
+          helpText="Die Id wird generiert und kann nicht verändert werden."
           onChange={onChange}
           disabled />
         <TextInput
@@ -22,7 +22,7 @@ const PlayerForm = ({ player, isNew, onSave, onChange, onCancel, saving, errors 
           label="Kurzname"
           value={player.name}
           placeholder="Kurz- oder Spitzname"
-          helpText="Kurzname oder Spitzname für Spielplan und Ergebnislisten"
+          helpText="Der Kurzname oder Spitzname wird für Spielplan und Ergebnislisten verwendet."
           onChange={onChange}
           error={errors.name} />
         <TextInput
@@ -30,18 +30,14 @@ const PlayerForm = ({ player, isNew, onSave, onChange, onCancel, saving, errors 
           label="Vollständiger Name"
           value={player.fullName}
           placeholder="Vor- und Nachname"
-          helpText="Vollständiger Name mit Vornamen und Nachname"
+          helpText="Den vollständigen Namen mit Vornamen und Nachname eingeben."
           onChange={onChange}
           error={errors.fullName} />
         <Checkbox
           name="active"
-          label="Aktiv - Spieler kann an Turnieren teilnehmen"
+          label="Aktiv"
+          helpText="Aktivitätsstatus: aktive Spieler können bei neuen Turnieren teilnehmen"
           checked={player.active}
-          onChange={onChange} />
-        <Checkbox
-          name="real"
-          label="Test - keine echte Person, nur zum Testen"
-          checked={!player.real}
           onChange={onChange} />
         <PasswordInput
           name="password"

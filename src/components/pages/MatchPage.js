@@ -27,7 +27,7 @@ class MatchPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.date != nextProps.match.date ||
       this.props.match.player != nextProps.match.player) {
-      this.setState({ match: nextProps.match });
+      this.setState({ match: JSON.parse(JSON.stringify(nextProps.match)) });
     }
   }
 
@@ -105,9 +105,9 @@ class MatchPage extends React.Component {
 MatchPage.propTypes = {
   params: PropTypes.object.isRequired,
   tournament: PropTypes.object.isRequired,
-  match: PropTypes.object,
-  roundId: PropTypes.number,
-  matchId: PropTypes.number,
+  match: PropTypes.object.isRequired,
+  roundId: PropTypes.number.isRequired,
+  matchId: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -119,7 +119,7 @@ function mapStateToProps(state, ownProps) {
   const rid = parseInt(ownProps.params.rid);
   const mid = parseInt(ownProps.params.mid);
   const match = state.tournament.rounds ?
-    JSON.parse(JSON.stringify(state.tournament.rounds[rid].matches[mid])) : {};
+    state.tournament.rounds[rid].matches[mid] : {};
   !match.date && Object.assign(match, {
     "date": (new Date()).toISOString().split('T')[0]
   });

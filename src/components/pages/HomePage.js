@@ -48,24 +48,22 @@ class HomePage extends React.Component {
               tournament={tournament}
               mode={ScheduleMode.current}
               count={3} />
-          </div>
-          <div className="cell small-12 medium-12 large-6 ">
             <h5 className="primary label">Aktuelle Tabelle</h5>
             <Table rows={tournament && tournament.table} />
           </div>
           <div className="cell small-12 medium-12 large-6 ">
+            <h5 className="primary label">Turnier-Details und Statistik</h5>
             <div className="callout success">
-              <h4 >Laufende Turniere</h4>
+              <h5>Laufende Turniere</h5>
               <TournamentList tournaments={progressTournaments} ranking />
             </div>
             <div className="callout secondary">
-              <h4 >Abgeschlossene Turniere</h4>
+              <h5>Abgeschlossene Turniere</h5>
               <TournamentList tournaments={completedTournaments} ranking />
             </div>
-          </div>
-          <div className="cell small-12 medium-12 large-6 ">
+            <h5 className="primary label">Kickerregeln</h5>
             <div className="callout primary">
-              <h4 >Kickerregeln</h4>
+              <h5>Liga-Regeln</h5>
               <Rules />
             </div>
           </div>

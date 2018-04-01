@@ -8,6 +8,7 @@ const TournamentTable = ({ tournaments }) => {
         <tr>
           <th>Name</th>
           <th>Ersteller</th>
+          <th>Type</th>
           <th>Aktion</th>
         </tr>
       </thead>

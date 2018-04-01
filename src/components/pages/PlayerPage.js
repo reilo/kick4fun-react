@@ -30,7 +30,7 @@ class PlayerPage extends React.Component {
   updatePlayerState(event) {
     const field = event.target.name;
     let player = this.state.player;
-    if (field == "active" || field == "real") {
+    if (field == "active") {
       player[field] = event.target.checked;
     } else {
       player[field] = event.target.value;
@@ -107,8 +107,7 @@ function mapStateToProps(state, ownProps) {
     id: '',
     name: '',
     fullName: '',
-    active: false,
-    real: false
+    active: false
   };
   if (playerId && state.players.length > 0) {
     player = getPlayerById(state.players, playerId);

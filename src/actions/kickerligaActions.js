@@ -44,15 +44,18 @@ export function updatePlayerSuccess(player) {
 
 export function savePlayer(player, isNew) {
   return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
     return isNew ?
       KickerligaApi.createPlayer(player).then(newPlayer => {
         dispatch(createPlayerSuccess(newPlayer));
       }).catch(error => {
+        dispatch(ajaxCallError(error));
         throw (error);
       }) :
       KickerligaApi.updatePlayer(player).then(updatedPlayer => {
         dispatch(updatePlayerSuccess(updatedPlayer));
       }).catch(error => {
+        dispatch(ajaxCallError(error));
         throw (error);
       });
   };

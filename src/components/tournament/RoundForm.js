@@ -23,7 +23,9 @@ const RoundForm = ({ round, onChange, onSave, onCancel, roundId, saving, errors 
         name="password"
         label="Passwort"
         value={round.password}
-        onChange={onChange}
+        placeholder="Kickerliga-Admin-Passwort"
+        helpText="Passwort des Kickerliga-Administrators"
+      onChange={onChange}
         error={errors.password} />
       <button
         type="button"

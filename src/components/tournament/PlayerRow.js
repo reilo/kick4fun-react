@@ -9,8 +9,7 @@ const PlayerRow = ({ player }) => {
       <td>{player.name}</td>
       <td>{player.fullName}</td>
       <td><span className={labelClass}>{label}</span></td>
-      <td><a className="small button tinyborder" href={editUrl}>Edit</a>
-      </td>
+      <td><a className="small button tinyborder" href={editUrl}>Edit</a></td>
     </tr>
   );
 };

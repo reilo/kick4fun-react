@@ -14,10 +14,7 @@ const Header = ({ loading }) => {
             <IndexLink to="/" activeClassName="active">Kickerliga</IndexLink>
           </li>
           <li className="menu-text">
-            <IndexLink to="/admin" activeClassName="active">Schiri</IndexLink>
-          </li>
-          <li className="menu-text">
-            <IndexLink to="/playground" activeClassName="active">Bolzplatz</IndexLink>
+            <IndexLink to="/admin" activeClassName="active">Admin</IndexLink>
           </li>
           <li className="menu-text">
             <Link to="/about" activeClassName="active">Info</Link>
