@@ -68,6 +68,7 @@ class CreateTournamentPage extends React.Component {
   redirect() {
     this.setState({ saving: false });
     toastr.success('Turnier gepeichert');
+    store.dispatch(tournamentActions.loadTournamentList());
     this.context.router.push('/liga/' + this.state.createInfo.id);
   }
 

@@ -10,7 +10,11 @@ import MatchList from '../tournament/MatchList';
 class ResultsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
-    props.params.tid && store.dispatch(tournamentActions.loadTournament(props.params.tid));
+  }
+
+  componentWillMount() {
+    const tid = this.props.params.tid;
+    tid && store.dispatch(tournamentActions.loadTournament(tid));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,23 +33,23 @@ class ResultsPage extends React.Component {
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{t ? t.name : "Laden..."}</h5>
             <h5 className="primary label">{tableTitle}</h5>
-            <Table rows={t && t.table} />
+            <Table rows={t.table || []} />
           </div>
           <div className="cell small-12 medium-6 large-3">
             <h5 className="primary label">Beste Torschützen</h5>
-            <Table rows={t && t.topScorer} count={5} columns={["goalsScored"]} />
+            <Table rows={t.topScorer || []} count={5} columns={["goalsScored"]} />
           </div>
           <div className="cell small-12 medium-6 large-3">
             <h5 className="primary label">Beste Verteidiger</h5>
-            <Table rows={t && t.topDefender} count={5} columns={["goalsShipped"]} />
+            <Table rows={t.topDefender || []} count={5} columns={["goalsShipped"]} />
           </div>
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">Höchste Siege</h5>
-            <MatchList matches={t && t.plainMatches} count={5} />
+            <MatchList matches={t.plainMatches || []} count={5} />
             <h5 className="primary label">Alle zu 0 Spiele</h5>
-            <MatchList matches={t && t.to0Matches} />
+            <MatchList matches={t.to0Matches || []} />
             <h5 className="primary label">Alle zu 9 Spiele</h5>
-            <MatchList matches={t && t.to9Matches} />
+            <MatchList matches={t.to9Matches || []} />
           </div>
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">Spielplan</h5>

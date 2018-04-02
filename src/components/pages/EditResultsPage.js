@@ -8,15 +8,14 @@ import Schedule, { ScheduleMode } from '../tournament/Schedule';
 class EditResultsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
-    props.params.tid && store.dispatch(tournamentActions.loadTournament(props.params.tid));
+  }
+
+  componentWillMount() {
+    const tid = this.props.params.tid;
+    tid && store.dispatch(tournamentActions.loadTournament(tid));
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.loadActive &&
-      this.props.ligaSummary.activeTournament != nextProps.ligaSummary.activeTournament) {
-      this.setState({ ligaSummary: Object.assign({}, nextProps.ligaSummary) });
-      store.dispatch(tournamentActions.loadTournament(nextProps.ligaSummary.activeTournament));
-    }
     if (this.props.tournament.name != nextProps.tournament.name) {
       this.setState({ tournament: Object.assign({}, nextProps.tournament) });
     }
@@ -47,16 +46,13 @@ EditResultsPage.propTypes = {
   ligaSummary: PropTypes.object.isRequired,
   tournament: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  loadActive: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  const loadActive = !ownProps.params.tid;
   return {
     ligaSummary: state.ligaSummary,
-    tournament: state.tournament,
-    loadActive: loadActive
+    tournament: state.tournament
   };
 }
 

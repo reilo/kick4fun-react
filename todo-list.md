@@ -6,7 +6,7 @@ Turnierverwaltung:
 Adminbereich:
 - Widget-Config (Homepage)
 - Mark official
-- Aktives Turnier
+- Aktives Turnier auswählen
 - Passwort ändern
 - Turniere löschen
 
@@ -20,10 +20,8 @@ Passwort:
 + verschlüsselt speichern/übertragen
 
 Bugs:
-- nach Speichern Werte aktualisieren
-- Allgemein Ladeverhalten, alle Seiten
 + Backup-Pfad anlegen, falls nicht vorhanden
-- setState Warnung im Browser
++ Home immer aktives Turnier anzeigen
 
 UI-Verbesserungen:
 - Gridlayout verbessern

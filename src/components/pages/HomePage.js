@@ -7,11 +7,16 @@ import Rules from '../tournament/Rules';
 import TournamentList from '../tournament/TournamentList';
 import { store } from '../../../src/configureStore';
 import { loadTournament } from '../../actions/tournamentActions';
+import * as kickerligaActions from '../../actions/kickerligaActions';
 
 // use class instead of function because of hot reloading restrictions
 class HomePage extends React.Component {
   constructor(props, context) {
     super(props, context);
+  }
+
+  componentWillMount() {
+    //store.dispatch(kickerligaActions.loadLigaSummary());
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,7 +54,7 @@ class HomePage extends React.Component {
               mode={ScheduleMode.current}
               count={3} />
             <h5 className="primary label">Aktuelle Tabelle</h5>
-            <Table rows={tournament && tournament.table} />
+            <Table rows={tournament.table || []} />
           </div>
           <div className="cell small-12 medium-12 large-6 ">
             <h5 className="primary label">Turnier-Details und Statistik</h5>

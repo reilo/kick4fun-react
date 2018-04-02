@@ -19,9 +19,11 @@ class MatchPage extends React.Component {
     this.updateMatchState = this.updateMatchState.bind(this);
     this.updateMatch = this.updateMatch.bind(this);
     this.cancel = this.cancel.bind(this);
+  }
 
-    const tournamentId = this.props.params.tid;
-    store.dispatch(tournamentActions.loadTournament(tournamentId));
+  componentWillMount() {
+    const tid = this.props.params.tid;
+    tid && store.dispatch(tournamentActions.loadTournament(tid));
   }
 
   componentWillReceiveProps(nextProps) {

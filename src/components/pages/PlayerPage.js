@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as playerActions from '../../actions/kickerligaActions';
 import PlayerForm from '../tournament/PlayerForm';
+import { store } from '../../../src/configureStore';
 import toastr from 'toastr';
 
 class PlayerPage extends React.Component {
@@ -52,6 +53,7 @@ class PlayerPage extends React.Component {
   redirect() {
     this.setState({ saving: false });
     toastr.success('Spieler gespeichert');
+    store.dispatch(playerActions.loadPlayerList());
     this.context.router.push('/admin');
   }
 

@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import PlayerTable from '../tournament/PlayerTable';
+import * as kickerligaActions from '../../actions/kickerligaActions';
+import * as tournamentActions from '../../actions/tournamentActions';
 import TournamentTable from '../tournament/TournamentTable';
 import { browserHistory } from 'react-router';
 
