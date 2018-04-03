@@ -35,7 +35,7 @@ export function loadTournament(id) {
 }
 
 export function createTournamentSuccess(tournament) {
-  return { type: types.CREATE_TOURNAMENT_SUCCESS, tournament };  
+  return { type: types.CREATE_TOURNAMENT_SUCCESS, tournament };
 }
 
 export function createTournament(createInfo) {
@@ -50,34 +50,19 @@ export function createTournament(createInfo) {
   };
 }
 
-export function updateMatchSuccess(match) {
-  return { type: types.UPDATE_MATCH_SUCCESS };
+export function updateTournamentSuccess(tournament) {
+  return { type: types.UPDATE_TOURNAMENT_SUCCESS, tournament };
 }
 
-export function updateMatch(tid, rid, mid, match) {
-  return function (dispatch, getState) {
+export function updateTournament(tournament) {
+  return dispatch => {
     dispatch(beginAjaxCall());
-    return TournamentApi.updateMatch(tid, rid, mid, match).then(() => {
-      dispatch(updateMatchSuccess(match));
-    }).catch(error => {
-      dispatch(ajaxCallError(error));
-      throw (error);
-    });
-  };
-}
-
-export function updateRoundSuccess(round) {
-  return { type: types.UPDATE_ROUND_SUCCESS };
-}
-
-export function updateRound(tid, rid, round) {
-  return function (dispatch, getState) {
-    dispatch(beginAjaxCall());
-    return TournamentApi.updateRound(tid, rid, round).then(() => {
-      dispatch(updateRoundSuccess(round));
-    }).catch(error => {
-      dispatch(ajaxCallError(error));
-      throw (error);
-    });
+    return TournamentApi.updateTournament(tournament.id, tournament)
+      .then(tournament => {
+        dispatch(updateTournamentSuccess(tournament));
+      }).catch(error => {
+        dispatch(ajaxCallError(error));
+        throw (error);
+      });
   };
 }

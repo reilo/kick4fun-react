@@ -2,10 +2,10 @@ import 'whatwg-fetch';
 import * as config from '../appConfig';
 import delay from './delay';
 
-class TournamentApi {
+class PlayerApi {
 
-  static getTournament(id) {
-    const url = config.API_URL + "tournaments/" + id;
+  static listPlayers() {
+    const url = config.API_URL + "players";
     return new Promise((resolve, reject) => {
       setTimeout(() => fetch(url, { method: 'GET' }).then(
         response => resolve(response.json())
@@ -15,19 +15,8 @@ class TournamentApi {
     });
   }
 
-  static listTournaments() {
-    const url = config.API_URL + "tournaments";
-    return new Promise((resolve, reject) => {
-      setTimeout(() => fetch(url, { method: 'GET' }).then(
-        response => resolve(response.json())
-      ).catch(
-        error => reject(error)
-      ), delay);
-    });
-  }
-
-  static createTournament(body) {
-    const url = config.API_URL + "tournaments";
+  static createPlayer(body) {
+    const url = config.API_URL + "players";
     return new Promise((resolve, reject) => {
       setTimeout(() => fetch(url, {
         method: 'POST',
@@ -35,16 +24,15 @@ class TournamentApi {
         body: JSON.stringify(body)
       }).then(
         response => response.status == 200 ?
-          resolve(response.json()) :
-          reject(response.statusText)
+          resolve(response.body) : reject(response.statusText)
       ).catch(
         error => reject(error)
       ), delay);
     });
   }
 
-  static updateTournament(tid, body) {
-    const url = config.API_URL + "tournaments/" + tid;
+  static updatePlayer(body) {
+    const url = config.API_URL + "players/" + body.id;
     return new Promise((resolve, reject) => {
       setTimeout(() => fetch(url, {
         method: 'PUT',
@@ -52,8 +40,7 @@ class TournamentApi {
         body: JSON.stringify(body)
       }).then(
         response => response.status == 200 ?
-          resolve(response.json()) :
-          reject(response.statusText)
+          resolve(response.body) : reject(response.statusText)
       ).catch(
         error => reject(error)
       ), delay);
@@ -62,4 +49,4 @@ class TournamentApi {
 
 }
 
-export default TournamentApi;
+export default PlayerApi;

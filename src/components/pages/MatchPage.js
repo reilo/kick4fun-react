@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
+import * as matchActions from '../../actions/matchActions';
 import { store } from '../../../src/configureStore';
-import MatchForm from '../tournament/MatchForm';
+import MatchForm from '../match/MatchForm';
 import toastr from 'toastr';
 
 class MatchPage extends React.Component {
@@ -138,7 +139,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(tournamentActions, dispatch)
+    actions: bindActionCreators(matchActions, dispatch)
   };
 }
 

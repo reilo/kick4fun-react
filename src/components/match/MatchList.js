@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Match from './Match';
 
-const MatchList = ({ matches, count = 0 }) => {
+const MatchList = ({ matches, count = 0, highlighting }) => {
   const labelType = "primary label";
   const nobreak = { "whiteSpace": "nowrap" };
   return (
@@ -12,7 +12,8 @@ const MatchList = ({ matches, count = 0 }) => {
             <Match
               key={index}
               match={match}
-              mirror />)}
+              mirror
+              highlighting={highlighting} />)}
         </tbody>
       </table>
     </div>
@@ -21,7 +22,8 @@ const MatchList = ({ matches, count = 0 }) => {
 
 MatchList.propTypes = {
   matches: PropTypes.array.isRequired,
-  count: PropTypes.number
+  count: PropTypes.number,
+  highlighting: PropTypes.array
 };
 
 export default MatchList;

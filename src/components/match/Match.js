@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Match = ({ match, editUrl, editMode, showDetails, mirror }) => {
+const Match = ({ match, editUrl, editMode, showDetails, mirror, highlighting = [] }) => {
 
   const p = match.player;
   const s = match.sets;
@@ -14,13 +14,16 @@ const Match = ({ match, editUrl, editMode, showDetails, mirror }) => {
   let left = "", right = "";
 
   let pstr = [];
+  let style = [];
   for (let i = 0; i < 2; i++) {
-    pstr.push(p &&
-      p[i][0] + (subst[p[i][0]] ? "*" : "") +
-      " & " +
-      p[i][1] + (subst[p[i][1]] ? "*" : ""));
+    for (let j = 0; j < 2; j++) {
+      pstr.push(p && p[i][j] + (subst[p[i][j]] ? "*" : ""));
+      style.push(p && highlighting.indexOf(p[i][j]) > -1 ?
+        { backgroundColor: "lightblue" } : {});
+    }
   }
   reverse && pstr.reverse();
+  reverse && style.reverse();
 
   let sstr = [];
   for (let i = 0; i < 3; i++) {
@@ -36,17 +39,24 @@ const Match = ({ match, editUrl, editMode, showDetails, mirror }) => {
   const date = new Date(match.date);
   const dateStr = isNaN(date.getTime()) ? "" : date.toLocaleDateString();
 
+
   return (
     <tr>
       {showDetails && <td>{dateStr}</td>}
-      <td>{pstr[0]}</td>
+      <td style={style[0]}>{pstr[0]}</td>
+      <td>&amp;</td>
+      <td style={style[1]}>{pstr[1]}</td>
       <td>-</td>
-      <td>{pstr[1]}</td>
+      <td style={style[2]}>{pstr[2]}</td>
+      <td>&amp;</td>
+      <td style={style[3]}>{pstr[3]}</td>
       <td>{rstr}</td>
       <td>({sstr[0]}</td>
       <td>{sstr[1]}</td>
       <td>{sstr[2]})</td>
-      {editMode && <td><a className="small button tinyborder" href={editUrl}>Edit</a></td>
+      {editMode && <td><a
+        className="small button tinyborder"
+        href={editUrl}>Edit</a></td>
       }
     </tr>
   );
@@ -57,7 +67,8 @@ Match.propTypes = {
   editUrl: PropTypes.string,
   editMode: PropTypes.bool,
   showDetails: PropTypes.bool,
-  mirror: PropTypes.bool
+  mirror: PropTypes.bool,
+  highlighting: PropTypes.array
 };
 
 export default Match;

@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as config from '../../appConfig';
-import TemplateTable from '../tournament/TemplateTable';
+import TemplateTable from '../template/TemplateTable';
 
-// use class instead of function because of hot reloading restrictions
 class SelectTemplatePage extends React.Component {
   constructor(props, context) {
     super(props, context);

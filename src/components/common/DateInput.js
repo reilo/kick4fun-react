@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const DateInput = ({ name, label, placeholder, helpText, value, onChange, error }) => {
+const DateInput = ({
+  name, label, placeholder, helpText, value, onChange, error
+}) => {
   return (
     <div className="small-12 columns">
       <label>{label}

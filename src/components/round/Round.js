@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import Match from './Match';
+import Match from '../match/Match';
 
-const Round = ({ tournament, roundId, editMode, showDetails }) => {
+const Round = ({ tournament, roundId, editMode, showDetails, highlighting }) => {
   const round = tournament.rounds[roundId];
   const startDate = new Date(round.startDate);
   const endDate = new Date(round.endDate);
@@ -27,7 +27,9 @@ const Round = ({ tournament, roundId, editMode, showDetails }) => {
               match={match}
               editUrl={"/match/" + tournament.id + "/" + roundId + "/" + index}
               editMode={editMode}
-              showDetails={showDetails} />)}
+              showDetails={showDetails}
+              highlighting={highlighting} />
+          )}
         </tbody>
       </table>
     </div>
@@ -38,7 +40,8 @@ Round.propTypes = {
   tournament: PropTypes.object.isRequired,
   roundId: PropTypes.number.isRequired,
   editMode: PropTypes.bool,
-  showDetails: PropTypes.bool
+  showDetails: PropTypes.bool,
+  highlighting: PropTypes.array
 };
 
 export default Round;

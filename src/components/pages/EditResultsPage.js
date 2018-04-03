@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/configureStore';
-import Schedule, { ScheduleMode } from '../tournament/Schedule';
+import RoundList, { ListMode } from '../round/RoundList';
 
 class EditResultsPage extends React.Component {
   constructor(props, context) {
@@ -23,19 +23,26 @@ class EditResultsPage extends React.Component {
 
   render() {
     const { tournament, actions } = this.props;
+    const title = tournament ? tournament.name : "Laden...";
+    const editUrl = "/tournament/" + tournament.id;
+    const nobreak = { "whiteSpace": "nowrap" };
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
-          <div className="cell small-0 medium-0 large-2" />
-          <div className="cell small-12 medium-12 large-8">
-            <h5 className="primary label">{tournament ? tournament.name : "Laden..."}</h5>
-            <Schedule
+          <div className="cell small-0 medium-0 large-1" />
+          <div className="cell small-12 medium-12 large-10">
+            <span style={nobreak}>
+              <h5 className="primary label">{title}&nbsp;
+        <a className="small button noborder" href={editUrl}>Edit</a>
+              </h5>
+            </span>
+            <RoundList
               tournament={tournament}
-              mode={ScheduleMode.all}
+              mode={ListMode.all}
               editMode={tournament.status == "progress"}
               showDetails />
           </div>
-          <div className="cell small-0 medium-0 large-2" />
+          <div className="cell small-0 medium-0 large-1" />
         </div>
       </div>
     );

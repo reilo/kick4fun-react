@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import PlayerTable from '../tournament/PlayerTable';
+import PlayerTable from '../player/PlayerTable';
 import * as kickerligaActions from '../../actions/kickerligaActions';
 import * as tournamentActions from '../../actions/tournamentActions';
 import TournamentTable from '../tournament/TournamentTable';
 import { browserHistory } from 'react-router';
 
-// use class instead of function because of hot reloading restrictions
 class AdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -41,10 +40,11 @@ class AdminPage extends React.Component {
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{"Spieleingabe & Terminplanung"}</h5>
             <div className="callout primary">
-              <p>Hier kannst du Spielergebnisse für die aktuellen Turniere
+              <p>Spielergebnisse für die aktuellen Turniere
                 eingeben und die Termine und Turnierdaten anpassen.<br />
-                Du kannst auch deine eigenen Turniere erstellen.
-                Der Administrator kann dein Turnier später als offiziell markieren, sodass es auch im öffentlichen Bereich angezeigt wird.</p>
+                Eigene Turniere erstellen - 
+                der Administrator kann dein Turnier später als offiziell markieren,
+                so dass es auch im öffentlichen Bereich angezeigt wird.</p>
             </div>
             <button type="submit"
               className="button"
@@ -54,9 +54,8 @@ class AdminPage extends React.Component {
             <TournamentTable tournaments={progressTournaments} editMode />
             <h5 className="primary label">Turnierverwaltung</h5>
             <div className="callout primary">
-              <p>Hier kannst du Turniere als offiziell markieren und das aktive
-                Turnier festlegen.
-              Du brauchst dazu das Kickerliga-Administrator-Passwort.</p>
+              <p>Turniere als offiziell markieren und das aktive
+                Turnier festlegen.</p>
             </div>
             <button type="submit"
               className="button"
@@ -67,9 +66,7 @@ class AdminPage extends React.Component {
           <div className="cell small-12 medium-12 large-6">
             <h5 className="primary label">{"Spielerverwaltung"}</h5>
             <div className="callout primary">
-              <p>Hier kannst du neue Spieler anlegen oder vorhandene bearbeiten.
-                Du brauchst dazu das Kickerliga-Administrator-Passwort.
-              </p>
+              <p>Neue Spieler anlegen oder vorhandene bearbeiten.</p>
             </div>
             <button type="submit"
               className="button"

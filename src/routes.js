@@ -11,6 +11,7 @@ import PlayerPage from './components/pages/PlayerPage';
 import AboutPage from './components/pages/AboutPage';
 import SelectTemplatePage from './components/pages/SelectTemplatePage';
 import CreateTournamentPage from './components/pages/CreateTournamentPage';
+import UpdateTournamentPage from './components/pages/UpdateTournamentPage';
 
 export default (
   <Route path="/" component={App}>
@@ -24,6 +25,7 @@ export default (
     <Route path="player/:id" component={PlayerPage} />
     <Route path="templates" component={SelectTemplatePage} />
     <Route path="template/:id" component={CreateTournamentPage} />
+    <Route path="tournament/:id" component={UpdateTournamentPage} />
     <Route path="about" component={AboutPage} />
   </Route>
 );

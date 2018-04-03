@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const NumberInput = ({ name, label, onChange, placeholder, helpText, value, error }) => {
+const NumberInput = ({
+  name, label, onChange, placeholder, helpText, value, error
+}) => {
   return (
     <div className="small-12 columns">
       <label>{label}

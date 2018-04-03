@@ -1,21 +1,21 @@
 import React, { PropTypes } from 'react';
 import Round from './Round';
 
-export const ScheduleMode = Object.freeze({
+export const ListMode = Object.freeze({
   "all": "all", "current": "current", "first": "first", "last": "last"
 });
 
-const Schedule = ({ tournament, mode, count, editMode, showDetails }) => {
+const RoundList = ({ tournament, mode, count, editMode, showDetails, highlighting }) => {
   const today = (new Date()).toISOString().split('T')[0];
   return (
     <div>
       {tournament.rounds && tournament.rounds.map((round, index) =>
         (
-          mode == ScheduleMode.all ||
-          mode == ScheduleMode.first && index < count ||
-          mode == ScheduleMode.last && index > tournament.rounds.length - count - 1 ||
+          mode == ListMode.all ||
+          mode == ListMode.first && index < count ||
+          mode == ListMode.last && index > tournament.rounds.length - count - 1 ||
           (
-            mode == ScheduleMode.current && (
+            mode == ListMode.current && (
               index > tournament.rounds.length - count - 1 ||
               round.endDate &&
               (
@@ -32,18 +32,20 @@ const Schedule = ({ tournament, mode, count, editMode, showDetails }) => {
           tournament={tournament}
           roundId={index}
           editMode={editMode}
-          showDetails={showDetails} />
+          showDetails={showDetails}
+          highlighting={highlighting} />
       )}
     </div>
   );
 };
 
-Schedule.propTypes = {
+RoundList.propTypes = {
   tournament: PropTypes.object.isRequired,
   mode: PropTypes.string.isRequired,
   count: PropTypes.number,
   editMode: PropTypes.bool,
-  showDetails: PropTypes.bool
+  showDetails: PropTypes.bool,
+  highlighting: PropTypes.array
 };
 
-export default Schedule;
+export default RoundList;

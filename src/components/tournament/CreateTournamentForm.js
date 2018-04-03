@@ -6,8 +6,10 @@ import SelectInput from '../common/SelectInput';
 import PasswordInput from '../common/PasswordInput';
 import CheckboxGroup from '../common/CheckboxGroup';
 
-const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, onCancel, saving, errors }) => {
-  const startDate = createInfo.startDate || (new Date()).toISOString().split('T')[0];
+const CreateTournamentForm = ({ templateInfo, createInfo, players,
+  onChange, onSave, onCancel, saving, errors }) => {
+  const startDate = createInfo.startDate ||
+    (new Date()).toISOString().split('T')[0];
   const playersForDropdown = players.map(player => {
     return { value: player.id, text: player.name };
   });
@@ -66,7 +68,7 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
         value={createInfo.password}
         placeholder="Turnier-Admin-Passwort"
         helpText="Wähle ein Passwort für die Turnier-Administration. Es kann auch leer sein."
-      onChange={onChange}
+        onChange={onChange}
         error={errors.password} />
       <button
         type="button"
@@ -86,7 +88,7 @@ const TournamentForm = ({ templateInfo, createInfo, players, onChange, onSave, o
   );
 };
 
-TournamentForm.propTypes = {
+CreateTournamentForm.propTypes = {
   templateInfo: PropTypes.object.isRequired,
   createInfo: PropTypes.object.isRequired,
   players: PropTypes.array.isRequired,
@@ -97,4 +99,4 @@ TournamentForm.propTypes = {
   errors: React.PropTypes.object
 };
 
-export default TournamentForm;
+export default CreateTournamentForm;

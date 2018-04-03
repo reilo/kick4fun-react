@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const PasswordInput = ({ name, label, placeholder, helpText, value,
-  onChange, error }) => {
+const PasswordInput = ({
+  name, label, placeholder, helpText, value, onChange, error
+}) => {
   return (
     <div className="small-12 columns">
       <label>{label}

@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const SelectInput = ({ name, label, onChange, defaultOption, value, error, options }) => {
+const SelectInput = ({
+  name, label, onChange, defaultOption, value, error, options
+}) => {
   return (
     <div className="small-12 columns">
       <label>{label}

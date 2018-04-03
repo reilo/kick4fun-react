@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
 import { store } from '../../../src/configureStore';
-import TournamentForm from '../tournament/TournamentForm';
+import CreateTournamentForm from '../tournament/CreateTournamentForm';
 import toastr from 'toastr';
 
-// use class instead of function because of hot reloading restrictions
 class CreateTournamentPage extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -32,7 +31,6 @@ class CreateTournamentPage extends React.Component {
   updateTournamentState(event) {
     const field = event.target.name;
     const val = event.target.value;
-    let errors = this.state.errors;
     let createInfo = this.state.createInfo;
     if (field == "startDate") {
       createInfo.startDate = val;
@@ -40,7 +38,8 @@ class CreateTournamentPage extends React.Component {
       const checked = event.target.checked;
       const name = field.split("_")[1];
       if (checked) {
-        createInfo.participants.indexOf(name) < 0 && createInfo.participants.push(name);
+        createInfo.participants.indexOf(name) < 0 &&
+          createInfo.participants.push(name);
       } else {
         const index = createInfo.participants.indexOf(name);
         if (index > -1) {
@@ -79,14 +78,16 @@ class CreateTournamentPage extends React.Component {
 
   render() {
     const { templateInfo, players } = this.props;
+    const newTitle = "Neues Turnier: " + templateInfo.name;
+    const newDetails = "Schritt 2: Details festlegen";
     return (
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-margin-y">
           <div className="cell small-0 medium-0 large-2" />
           <div className="cell small-12 medium-12 large-8 ">
-            <h5 className="primary label">Neues Turnier: {templateInfo.name}</h5>
-            <h5 className="primary label">Schritt 2: Details festlegen</h5>
-            <TournamentForm
+            <h5 className="primary label">{newTitle}</h5>
+            <h5 className="primary label">{newDetails}</h5>
+            <CreateTournamentForm
               templateInfo={templateInfo}
               createInfo={this.state.createInfo}
               players={players}
@@ -146,4 +147,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(tournamentActions, dispatch)
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTournamentPage);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  CreateTournamentPage);

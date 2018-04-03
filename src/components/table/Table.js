@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
 import TableRow from './TableRow';
 
-const Table = ({ rows, count, columns }) => {
+const Table = ({ rows, count, columns, highlighting, onChange }) => {
   let headers = [];
   let index = 0;
   headers.push(React.createElement('th', { key: index++ }, ""));
+  (!columns || columns.indexOf("check") > -1) &&
+    headers.push(React.createElement('th', { key: index++ }, ""));
   headers.push(React.createElement('th', { key: index++ }, "Name"));
   (!columns || columns.indexOf("matches") > -1) &&
     headers.push(React.createElement('th', { className: "number", key: index++ }, "Spiele"));
@@ -22,7 +24,13 @@ const Table = ({ rows, count, columns }) => {
     React.createElement('thead', { key: index++ }, React.createElement('tr', {}, headers)),
     React.createElement('tbody', { key: index++ }, rows && rows.map((row, index) =>
       (!count || count > index) &&
-      <TableRow key={index} pos={index + 1} row={row} columns={columns} />
+      <TableRow
+        key={index}
+        pos={index + 1}
+        row={row}
+        columns={columns}
+        highlighting={highlighting}
+        onChange={onChange} />
     ))
   ]);
 };
@@ -30,7 +38,9 @@ const Table = ({ rows, count, columns }) => {
 Table.propTypes = {
   rows: PropTypes.array.isRequired,
   count: PropTypes.number,
-  columns: PropTypes.array
+  columns: PropTypes.array,
+  highlighting: PropTypes.array,
+  onChange: PropTypes.func.isRequired
 };
 
 export default Table;

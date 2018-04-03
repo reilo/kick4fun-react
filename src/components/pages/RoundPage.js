@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tournamentActions from '../../actions/tournamentActions';
+import * as roundActions from '../../actions/roundActions';
 import { store } from '../../../src/configureStore';
-import RoundForm from '../tournament/RoundForm';
+import RoundForm from '../round/RoundForm';
 import toastr from 'toastr';
 
 class RoundPage extends React.Component {
@@ -131,7 +132,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(tournamentActions, dispatch)
+    actions: bindActionCreators(roundActions, dispatch)
   };
 }
 

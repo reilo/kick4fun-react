@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as playerActions from '../../actions/kickerligaActions';
-import PlayerForm from '../tournament/PlayerForm';
+import * as playerActions from '../../actions/playerActions';
+import PlayerForm from '../player/PlayerForm';
 import { store } from '../../../src/configureStore';
 import toastr from 'toastr';
 

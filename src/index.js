@@ -7,8 +7,9 @@ import * as config from './appConfig';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
-import { loadLigaSummary, loadPlayerList } from './actions/kickerligaActions';
-import { loadTournament, loadTournamentList } from './actions/tournamentActions';
+import { loadLigaSummary } from './actions/kickerligaActions';
+import { loadPlayerList } from './actions/playerActions';
+import { loadTournamentList } from './actions/tournamentActions';
 import { loadTemplateList } from './actions/templateActions';
 import toastr from 'toastr';
 

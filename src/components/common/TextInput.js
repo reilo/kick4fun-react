@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const TextInput = ({ name, label, placeholder, helpText, value,
-  disabled = false, onChange, error }) => {
+const TextInput = ({
+  name, label, placeholder, helpText, value, disabled = false, onChange, error
+}) => {
   const isDisabled = disabled ? "disabled" : "";
   return (
     <div className="small-12 columns">
