@@ -99,7 +99,8 @@ class ResultsPage extends React.Component {
             <RoundList
               tournament={t}
               mode={ListMode.all}
-              highlighting={this.state.checkedPlayers} />
+              highlighting={this.state.checkedPlayers}
+              showDetails />
           </div>
         </div>
       </div>

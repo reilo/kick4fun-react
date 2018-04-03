@@ -13,7 +13,8 @@ const MatchList = ({ matches, count = 0, highlighting }) => {
               key={index}
               match={match}
               mirror
-              highlighting={highlighting} />)}
+              highlighting={highlighting}
+              showDetails />)}
         </tbody>
       </table>
     </div>
